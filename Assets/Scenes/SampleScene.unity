@@ -236,6 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 21880310}
   - component: {fileID: 21880309}
+  - component: {fileID: 21880311}
   m_Layer: 0
   m_Name: PartyObject
   m_TagString: Untagged
@@ -268,6 +269,17 @@ Transform:
   m_Father: {fileID: 1150944599}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &21880311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 21880308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19204595b8c25c547bb65902c0dd8f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &73778153
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,7 +919,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53a39665fc891a740828181caed7b1ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  party: {fileID: 21880309}
+  plantPrefab: {fileID: 1680121195073002, guid: ebe71d1bf79cf774786c3f075968c953,
+    type: 2}
 --- !u!4 &1150944599
 Transform:
   m_ObjectHideFlags: 0
@@ -936,8 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b37ca09a108f0541bd469a677c1651b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  world: {fileID: 1150944598}
-  party: {fileID: 21880309}
 --- !u!114 &1150944601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,8 +960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a51b07246706f443a134213499966e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftWorldX: 0
-  rightWorldX: 16
   floorSprite: {fileID: 21300000, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   skySprite: {fileID: 21300008, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   foregroundSprites:

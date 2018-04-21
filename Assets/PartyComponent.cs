@@ -8,6 +8,7 @@ public class PartyComponent : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(Pendulum(3));
+        GetComponent<WorldItemComponent>().worldItem = party;
     }
 	
 	// Update is called once per frame
