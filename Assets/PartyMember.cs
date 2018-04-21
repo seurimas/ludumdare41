@@ -10,7 +10,7 @@ public class PartyMember : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(Pendulum(4));
+
     }
 
     // Update is called once per frame
@@ -36,17 +36,5 @@ public class PartyMember : MonoBehaviour {
         }
 
         active = null;
-    }
-
-    private IEnumerator Pendulum(float waitTime)
-    {
-        int destiny = -11;
-
-        while (true)
-        {
-            destiny *= -1;
-            Move(destiny);
-            yield return new WaitForSeconds(waitTime);
-        }
     }
 }
