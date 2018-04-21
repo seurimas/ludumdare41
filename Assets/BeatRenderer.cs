@@ -7,10 +7,6 @@ public class BeatRenderer : MonoBehaviour, IRhythmListener {
     public Sprite target;
     public GameObject beatPrefab;
     private int latestBeat = 0;
-    public void OnBeatEarly()
-    {
-    }
-
     public void OnBeatRight()
     {
     }

@@ -12,7 +12,6 @@ public enum Notes
 
 public interface IRhythmListener
 {
-    void OnBeatEarly();
     bool OnNote(Notes note, List<Notes> fullRhythm);
     void OnBeatRight();
     void OnFailure(List<Notes> failedRhythm, bool tooEarly);
@@ -22,16 +21,13 @@ public class RhythmManager : MonoBehaviour {
     public static RhythmManager instance = null;
     public float nextBeat = 0;
     public int currentBeat = 0;
+    private int nextPlayedBeat = 0;
     public float beatTime = 0.7f;
     public float beatLeadLeeway = 0.3f;
     public float beatLagLeeway = 0.3f;
-    private bool beatStarted = false;
-    private bool beatPerfected = false;
     private List<Notes> notes = new List<Notes>();
     public Dictionary<KeyCode, Notes> keyMapping = new Dictionary<KeyCode, Notes>();
     private List<IRhythmListener> listeners = new List<IRhythmListener>();
-    public AudioClip beat;
-    public AudioSource source;
 
     public float GetTTB()
     {
@@ -62,54 +58,38 @@ public class RhythmManager : MonoBehaviour {
         keyMapping.Add(KeyCode.W, Notes.Cleric);
         keyMapping.Add(KeyCode.E, Notes.Rogue);
         keyMapping.Add(KeyCode.R, Notes.Fighter);
-        source.clip = beat;
         nextBeat = Time.time;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Time.time > nextBeat - beatLagLeeway && !beatStarted)
-        {
-            StartBeat();
-        }
-        if (Time.time > nextBeat && !beatPerfected)
-        {
-            HitBeat();
-        }
-        if (Time.time > nextBeat + beatLagLeeway)
+        if (GetTTB() < -beatLagLeeway)
         {
             FailNote(false);
-            source.Stop();
+        }
+        if (GetTTB(nextPlayedBeat) <= 0)
+        {
+            nextPlayedBeat++;
+            HitBeat();
         }
 		foreach (KeyValuePair<KeyCode, Notes> entry in keyMapping)
         {
             if (Input.GetKeyDown(entry.Key))
             {
-                source.Stop();
-                // Hit a note!
-                if (!beatStarted)
+                if (GetTTB() > beatLeadLeeway)
                 {
                     FailNote(true);
-                } else { 
+                } else
+                {
+                    // Hit a note!
                     ProcessNote(entry.Value);
                 }
             }
         }
 	}
 
-    void StartBeat()
-    {
-        beatStarted = true;
-        source.Play();
-        foreach (IRhythmListener listener in listeners)
-        {
-            listener.OnBeatEarly();
-        }
-    }
-
     void HitBeat()
     {
-        beatPerfected = true;
         foreach (IRhythmListener listener in listeners)
         {
             listener.OnBeatRight();
@@ -143,13 +123,11 @@ public class RhythmManager : MonoBehaviour {
 
     void EatBeat()
     {
-        if (beatStarted)
+        if (GetTTB() < beatTime + beatLeadLeeway)
         {
             nextBeat = nextBeat + beatTime;
             currentBeat++;
         }
-        beatStarted = false;
-        beatPerfected = false;
     }
 
     public void AddListener(IRhythmListener listener)
