@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 
-public class Party
+public class Party : IWorldItem
 {
     private int numberLinePosition;
     public int NumberLinePosition
     {
         get { return numberLinePosition; }
+    }
+    public int GetPosition()
+    {
+        return numberLinePosition;
     }
     public void applyAction(IPartyAction action)
     {

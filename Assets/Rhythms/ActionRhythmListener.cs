@@ -5,20 +5,44 @@ using UnityEngine;
 
 public class ActionRhythmListener : MonoBehaviour, IRhythmListener
 {
-    public Dictionary<Notes[], Action<string>> actions = new Dictionary<Notes[], Action<string>>();
+    public Dictionary<Notes[], Action<List<Notes>>> actions = new Dictionary<Notes[], Action<List<Notes>>>();
+    public PartyComponent party;
     // Use this for initialization
     void Start()
     {
-        actions.Add(new Notes[] { Notes.Fighter, Notes.Fighter, Notes.Fighter, Notes.Bard }, (str) => Debug.Log(str));
+        Notes R = Notes.Fighter;
+        Notes E = Notes.Rogue;
+        Notes W = Notes.Cleric;
+        Notes Q = Notes.Bard;
+        actions.Add(new Notes[] { R, R, R, Q },
+            (rhythm) => party.party.applyAction(new AdvanceAction())
+        );
+        actions.Add(new Notes[] { Q, R, Q, R },
+            (rhythm) => party.party.applyAction(new RetreatAction())
+        );
+        actions.Add(new Notes[] { E, E, R, E },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Attack
+        );
+        actions.Add(new Notes[] { W, W, R, Q },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Defend
+        );
+        actions.Add(new Notes[] { W, W, E, E },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 1
+        );
+        actions.Add(new Notes[] { Q, Q, E, E },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 2
+        );
+        actions.Add(new Notes[] { R, E, W, Q },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 3
+        );
+        actions.Add(new Notes[] { Q, W, E, R },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 4
+        );
         GetComponent<RhythmManager>().AddListener(this);
     }
 
     // Update is called once per frame
     void Update()
-    {
-    }
-
-    public void OnBeatEarly()
     {
     }
 
@@ -32,8 +56,7 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
 
     public bool OnNote(Notes note, List<Notes> fullRhythm)
     {
-        Debug.Log(note.ToString());
-        foreach (KeyValuePair<Notes[], Action<string>> action in actions)
+        foreach (KeyValuePair<Notes[], Action<List<Notes>>> action in actions)
         {
             if (fullRhythm.Count != action.Key.Length)
             {
@@ -49,9 +72,13 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
             }
             if (isAction)
             {
-                action.Value("Onwards");
+                action.Value(fullRhythm);
                 return true;
             }
+        }
+        if (fullRhythm.Count == 4)
+        {
+            return true;
         }
         return false;
     }
