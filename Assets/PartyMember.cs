@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,25 +7,22 @@ public class PartyMember : MonoBehaviour {
 
     public int targetX;
     public float speed;
-    public bool Move;
-    int auxTarget;
-
-    private IEnumerator coroutine;
+    int threshold = 1;
+    bool onTarget = false;
 
 	// Use this for initialization
 	void Start () {
-        coroutine = WaitAndPrint(5.0f);
-        StartCoroutine(coroutine);
+
     }
 
     // Update is called once per frame
     void Update () {
-        MoveTo(auxTarget);
+        MoveTo(targetX);
     }
 
     void MoveTo(int targetX)
     {
-        if(Mathf.Abs(transform.position.x - targetX) > .2f && Move)
+        if (Mathf.Abs(targetX - transform.position.x) > threshold)
         {
             if (targetX > transform.position.x)
             {
@@ -34,31 +32,15 @@ public class PartyMember : MonoBehaviour {
             {
                 transform.Translate(-Time.deltaTime * speed, 0, 0);
             }
+
+            Debug.Log("I'm not on target");
+
         }
-    }
-
-
-    IEnumerator MoveTowardsTarget()
-    {        
-        while (Mathf.Abs(transform.position.x - targetX) > .1f && Move)
+        else
         {
-            transform.position = Vector3.MoveTowards(transform.position, Vector3.right * targetX, Time.deltaTime * speed);
-            yield return 0;
+            Debug.Log("I'm on target");
         }
 
-    }
 
-    private IEnumerator WaitAndPrint(float waitTime)
-    {
-        int[] xPositions = new int[2];
-        xPositions[0] = (int)transform.parent.position.x;
-        xPositions[1] = targetX;
-
-        while (true)
-        {
-            yield return new WaitForSeconds(waitTime);
-            Debug.Log(auxTarget);
-            auxTarget = xPositions[(int)Time.time % 2];
-        }
     }
 }

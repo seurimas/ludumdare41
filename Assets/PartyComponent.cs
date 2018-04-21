@@ -4,31 +4,45 @@ using UnityEngine;
 
 public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
+    public int targetX;
 	// Use this for initialization
 	void Start () {
-
+        StartCoroutine(Pendulum(3));
     }
 	
 	// Update is called once per frame
 	void Update () {
-        MoveTo(party.NumberLinePosition);
+        MoveTo(targetX);
 	}
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(new Vector3(party.NumberLinePosition, transform.position.y), 1);
+        Gizmos.DrawSphere(new Vector3(transform.position.x + 2, transform.position.y), 1);
     }
 
-    void MoveTo(int targetPosition)
+    void MoveTo(int targetX)
     {
-        if (targetPosition > transform.position.x)
+        if (Mathf.Abs(transform.position.x - targetX) > .2f)
         {
-            transform.Translate(Time.deltaTime, 0, 0);
+            if (targetX > transform.position.x)
+            {
+                transform.Translate(Time.deltaTime, 0, 0);
+            }
+            else if (targetX < transform.position.x)
+            {
+                transform.Translate(-Time.deltaTime, 0, 0);
+            }
         }
-        else if (targetPosition < transform.position.x)
+    }
+
+
+    private IEnumerator Pendulum(float waitTime)
+    {
+        while (true)
         {
-            transform.Translate(-Time.deltaTime, 0, 0);
+            yield return new WaitForSeconds(waitTime);
+            targetX *= -1;
         }
     }
 }
