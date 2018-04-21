@@ -19,16 +19,23 @@ public interface IRhythmListener
 }
 
 public class RhythmManager : MonoBehaviour {
-    private float timeSinceBeat;
+    public float timeSinceBeat = 0;
     public float beatTime = 0.5f;
-    public float beatLeadLeeway = 0.1f;
-    public float beatLagLeeway = 0.2f;
+    public float beatLeadLeeway = 0.4f;
+    public float beatLagLeeway = 0.3f;
     private List<Notes> notes = new List<Notes>();
     public Dictionary<KeyCode, Notes> keyMapping = new Dictionary<KeyCode, Notes>();
     private List<IRhythmListener> listeners = new List<IRhythmListener>();
+    public AudioClip beat;
+    public AudioSource source;
     // Use this for initialization
     void Start () {
-	}
+        keyMapping.Add(KeyCode.Q, Notes.Cleric);
+        keyMapping.Add(KeyCode.W, Notes.Bard);
+        keyMapping.Add(KeyCode.E, Notes.Rogue);
+        keyMapping.Add(KeyCode.R, Notes.Fighter);
+        source.clip = beat;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -41,16 +48,18 @@ public class RhythmManager : MonoBehaviour {
         {
             HitBeat();
         }
-        else if (timeSinceBeat < beatTime + beatLagLeeway && currentTime > beatTime + beatLagLeeway)
+        else if (timeSinceBeat < beatTime + beatLagLeeway && currentTime >= beatTime + beatLagLeeway)
         {
             FailNote(false);
-            timeSinceBeat = 0;
+            source.Stop();
+            currentTime = 0;
         }
         timeSinceBeat = currentTime;
 		foreach (KeyValuePair<KeyCode, Notes> entry in keyMapping)
         {
             if (Input.GetKeyDown(entry.Key))
             {
+                source.Stop();
                 // Hit a note!
                 if (timeSinceBeat < beatTime - beatLeadLeeway)
                 {
@@ -66,6 +75,7 @@ public class RhythmManager : MonoBehaviour {
 
     void StartBeat()
     {
+        source.Play();
         foreach (IRhythmListener listener in listeners)
         {
             listener.OnBeatEarly();
