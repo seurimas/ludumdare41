@@ -16,8 +16,6 @@ public class PartyComponent : MonoBehaviour {
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 1);
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(new Vector3(party.NumberLinePosition, transform.position.y), 1);
     }
