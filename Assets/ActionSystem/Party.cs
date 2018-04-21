@@ -1,23 +1,29 @@
 ﻿using System.Collections;
 
-public class Party : IWorldItem
+public class Party : WorldItem
 {
-    private int numberLinePosition;
-    public int NumberLinePosition
-    {
-        get { return numberLinePosition; }
-    }
+    public int? attackTarget;
+    public int? harvestTarget;
+    
     public int GetPosition()
     {
-        return numberLinePosition;
+        return NumberLinePosition;
     }
-    public void applyAction(IPartyAction action)
+
+    public override int GetFlags()
     {
-        if (action is AdvanceAction)
-        {
-            numberLinePosition++;
-        } else if (action is RetreatAction) {
-            numberLinePosition--;
-        }
+        return 0;
+    }
+
+    public void Attack(WorldItem target)
+    {
+        attackTarget = target.GetId();
+        harvestTarget = null;
+    }
+
+    public void Harvest(WorldItem target)
+    {
+        attackTarget = null;
+        harvestTarget = target.GetId();
     }
 }
