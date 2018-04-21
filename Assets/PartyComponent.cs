@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
-    public float visualNumberLinePosition;
 	// Use this for initialization
 	void Start () {
 		
@@ -13,12 +12,20 @@ public class PartyComponent : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         int targetPosition = party.NumberLinePosition;
-        if (targetPosition > visualNumberLinePosition)
+        if (targetPosition > transform.position.x)
         {
-            visualNumberLinePosition = Mathf.Clamp(targetPosition + Time.deltaTime, visualNumberLinePosition, targetPosition);
-        } else if (targetPosition < visualNumberLinePosition)
+            transform.Translate(Time.deltaTime, 0, 0);
+        } else if (targetPosition < transform.position.x)
         {
-            visualNumberLinePosition = Mathf.Clamp(targetPosition - Time.deltaTime, targetPosition, visualNumberLinePosition);
+            transform.Translate(-Time.deltaTime, 0, 0);
         }
 	}
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 1);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(new Vector3(party.NumberLinePosition, 0), 1);
+    }
 }
