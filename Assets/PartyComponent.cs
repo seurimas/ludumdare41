@@ -6,19 +6,12 @@ public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
 	// Use this for initialization
 	void Start () {
-		
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        int targetPosition = party.NumberLinePosition;
-        if (targetPosition > transform.position.x)
-        {
-            transform.Translate(Time.deltaTime, 0, 0);
-        } else if (targetPosition < transform.position.x)
-        {
-            transform.Translate(-Time.deltaTime, 0, 0);
-        }
+        MoveTo(party.NumberLinePosition);
 	}
 
     void OnDrawGizmos()
@@ -26,6 +19,18 @@ public class PartyComponent : MonoBehaviour {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 1);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawSphere(new Vector3(party.NumberLinePosition, 0), 1);
+        Gizmos.DrawSphere(new Vector3(party.NumberLinePosition, transform.position.y), 1);
+    }
+
+    void MoveTo(int targetPosition)
+    {
+        if (targetPosition > transform.position.x)
+        {
+            transform.Translate(Time.deltaTime, 0, 0);
+        }
+        else if (targetPosition < transform.position.x)
+        {
+            transform.Translate(-Time.deltaTime, 0, 0);
+        }
     }
 }
