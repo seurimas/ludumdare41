@@ -10,8 +10,33 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
     // Use this for initialization
     void Start()
     {
-        actions.Add(new Notes[] { Notes.Fighter, Notes.Fighter, Notes.Fighter, Notes.Bard },
+        Notes R = Notes.Fighter;
+        Notes E = Notes.Rogue;
+        Notes W = Notes.Cleric;
+        Notes Q = Notes.Bard;
+        actions.Add(new Notes[] { R, R, R, Q },
             (rhythm) => party.party.applyAction(new AdvanceAction())
+        );
+        actions.Add(new Notes[] { Q, R, Q, R },
+            (rhythm) => party.party.applyAction(new RetreatAction())
+        );
+        actions.Add(new Notes[] { E, E, R, E },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Attack
+        );
+        actions.Add(new Notes[] { W, W, R, Q },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Defend
+        );
+        actions.Add(new Notes[] { W, W, E, E },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 1
+        );
+        actions.Add(new Notes[] { Q, Q, E, E },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 2
+        );
+        actions.Add(new Notes[] { R, E, W, Q },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 3
+        );
+        actions.Add(new Notes[] { Q, W, E, R },
+            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 4
         );
         GetComponent<RhythmManager>().AddListener(this);
     }
