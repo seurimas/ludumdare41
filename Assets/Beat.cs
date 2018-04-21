@@ -9,6 +9,8 @@ public class Beat : MonoBehaviour {
     public Notes note;
     public bool hit = false;
     public bool failed = false;
+    public Sprite noNote;
+    public Sprite failedNote;
     public Sprite bardNote;
     public Sprite clericNote;
     public Sprite rogueNote;
@@ -37,8 +39,20 @@ public class Beat : MonoBehaviour {
                     image.sprite = rogueNote;
                     break;
             }
+        } else if (failed)
+        {
+            image.sprite = failedNote;
+        } else
+        {
+            image.sprite = noNote;
         }
 	}
+
+    public void Clear()
+    {
+        hit = false;
+        failed = false;
+    }
 
     public void Hit(Notes note)
     {
