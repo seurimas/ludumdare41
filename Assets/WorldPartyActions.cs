@@ -9,7 +9,7 @@ public class WorldPartyActions : MonoBehaviour {
 	void Start ()
     {
         party = GetComponentInChildren<PartyComponent>();
-        world = GetComponentInChildren<SpiralWorldManager>();
+        world = GetComponent<SpiralWorldManager>();
         world.world.AddItem(party.party);
 	}
 	
