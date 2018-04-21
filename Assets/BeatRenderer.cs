@@ -74,5 +74,12 @@ public class BeatRenderer : MonoBehaviour, IRhythmListener {
                 beat.transform.transform.localPosition = new Vector3(RhythmManager.instance.GetTTB(i) * spaceBetween, 0);
             }
         }
+        foreach (Beat beat in GetComponentsInChildren<Beat>())
+        {
+            if (beat.beatIndex < RhythmManager.instance.currentBeat - 10)
+            {
+                Destroy(beat.gameObject);
+            }
+        }
 	}
 }

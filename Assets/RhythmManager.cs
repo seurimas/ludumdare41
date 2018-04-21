@@ -35,7 +35,7 @@ public class RhythmManager : MonoBehaviour {
 
     public float GetTTB()
     {
-        return nextBeat - Time.time;
+        return GetTTB(currentBeat);
     }
 
     public float GetTTB(int beatIndex)
