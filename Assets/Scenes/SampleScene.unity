@@ -140,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149e4ca9d099245458b05ec61b2b59e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualNumberLinePosition: 0
 --- !u!4 &21880310
 Transform:
   m_ObjectHideFlags: 0
@@ -150,7 +149,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 838645085}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -236,7 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838645085}
   - component: {fileID: 838645083}
-  - component: {fileID: 838645084}
+  - component: {fileID: 838645086}
   m_Layer: 0
   m_Name: Member
   m_TagString: Untagged
@@ -289,162 +289,29 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!114 &838645084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 838645082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3253a839687afde478f30b6ba82959f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wayPoints:
-  - {fileID: 1931767633}
-  - {fileID: 1003577918}
-  speed: 3
-  inReverse: 1
-  currentWaypoint: {fileID: 0}
-  currentIndex: 0
 --- !u!4 &838645085
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 838645082}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9, y: -3, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 21880310}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1003577917
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1003577918}
-  - component: {fileID: 1003577919}
-  m_Layer: 0
-  m_Name: GameObject (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1003577918
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1003577917}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1003577919
+--- !u!114 &838645086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1003577917}
+  m_GameObject: {fileID: 838645082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce100e77ab8a4d746840e28d126dad53, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ea6c63b8533d7244bce9824ac8305f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitSeconds: 0
-  speedOut: 0
---- !u!1001 &1257421073
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 4f7541b9f9224284cb05ef2dd81b9bcc, type: 2}
-  m_IsPrefabParent: 0
---- !u!1 &1931767632
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1616643061296472, guid: 4f7541b9f9224284cb05ef2dd81b9bcc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1257421073}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1931767633}
-  - component: {fileID: 1931767634}
-  m_Layer: 0
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1931767633
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 4362876641863440, guid: 4f7541b9f9224284cb05ef2dd81b9bcc,
-    type: 2}
-  m_PrefabInternal: {fileID: 1257421073}
-  m_GameObject: {fileID: 1931767632}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: -3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1931767634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1931767632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce100e77ab8a4d746840e28d126dad53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waitSeconds: 0
-  speedOut: 0
+  targetX: -8
+  speed: 1
