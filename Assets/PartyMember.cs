@@ -5,42 +5,45 @@ using UnityEngine;
 
 public class PartyMember : MonoBehaviour {
 
-    public int targetX;
     public float speed;
-    int threshold = 1;
-    bool onTarget = false;
+    Coroutine active;
 
 	// Use this for initialization
 	void Start () {
-
+        StartCoroutine(Pendulum(4));
     }
 
     // Update is called once per frame
     void Update () {
-        MoveTo(targetX);
     }
 
-    void MoveTo(int targetX)
+    public void Move(int targetX)
     {
-        if (Mathf.Abs(targetX - transform.position.x) > threshold)
+        if (active != null)
         {
-            if (targetX > transform.position.x)
-            {
-                transform.Translate(Time.deltaTime * speed, 0, 0);
-            }
-            else if (targetX < transform.position.x)
-            {
-                transform.Translate(-Time.deltaTime * speed, 0, 0);
-            }
-
-            Debug.Log("I'm not on target");
-
-        }
-        else
-        {
-            Debug.Log("I'm on target");
+            StopCoroutine(active);
         }
 
+        active = StartCoroutine(MoveCoroutine(targetX));
+    }
 
+    IEnumerator MoveCoroutine(int finalX)
+    {
+        while ((int)transform.position.x != finalX)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(finalX, transform.position.y), Time.deltaTime * speed);
+            yield return 0;
+        }
+
+        active = null;
+    }
+
+    private IEnumerator Pendulum(float waitTime)
+    {
+        while (true)
+        {
+            Move((int)transform.position.x * -1);
+            yield return new WaitForSeconds(waitTime);
+        }
     }
 }
