@@ -6,7 +6,7 @@ using UnityEngine;
 public class ActionRhythmListener : MonoBehaviour, IRhythmListener
 {
     public Dictionary<Notes[], Action<List<Notes>>> actions = new Dictionary<Notes[], Action<List<Notes>>>();
-    public PartyComponent party;
+    public SpiralWorldManager world;
     // Use this for initialization
     void Start()
     {
@@ -15,28 +15,28 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
         Notes W = Notes.Cleric;
         Notes Q = Notes.Bard;
         actions.Add(new Notes[] { R, R, R, Q },
-            (rhythm) => party.party.applyAction(new AdvanceAction())
+            (rhythm) => world.AdvanceParty()
         );
         actions.Add(new Notes[] { Q, R, Q, R },
-            (rhythm) => party.party.applyAction(new RetreatAction())
+            (rhythm) => world.RetreatParty()
         );
         actions.Add(new Notes[] { E, E, R, E },
-            (rhythm) => party.party.applyAction(new RetreatAction()) // Attack
+            (rhythm) => world.PartyAttack() // Attack
         );
         actions.Add(new Notes[] { W, W, R, Q },
-            (rhythm) => party.party.applyAction(new RetreatAction()) // Defend
+            (rhythm) => world.PartyAttack() // Defend
         );
         actions.Add(new Notes[] { W, W, E, E },
-            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 1
+            (rhythm) => world.PartyHarvest() // Harvest
         );
         actions.Add(new Notes[] { Q, Q, E, E },
-            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 2
+            (rhythm) => world.PartyAttack() // Special 2
         );
         actions.Add(new Notes[] { R, E, W, Q },
-            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 3
+            (rhythm) => world.PartyAttack() // Special 3
         );
         actions.Add(new Notes[] { Q, W, E, R },
-            (rhythm) => party.party.applyAction(new RetreatAction()) // Special 4
+            (rhythm) => world.PartyAttack() // Special 4
         );
         GetComponent<RhythmManager>().AddListener(this);
     }
