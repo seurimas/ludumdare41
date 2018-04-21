@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PartyComponent : MonoBehaviour {
-    public Party party;
+    public Party party = new Party();
     public float visualNumberLinePosition;
 	// Use this for initialization
 	void Start () {
