@@ -40,9 +40,12 @@ public class PartyMember : MonoBehaviour {
 
     private IEnumerator Pendulum(float waitTime)
     {
+        int destiny = -11;
+
         while (true)
         {
-            Move((int)transform.position.x * -1);
+            destiny *= -1;
+            Move(destiny);
             yield return new WaitForSeconds(waitTime);
         }
     }
