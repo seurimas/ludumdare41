@@ -1,12 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldPartyActions : MonoBehaviour {
     private SpiralWorldManager world;
     private PartyComponent party;
-	// Use this for initialization
-	void Start ()
+    public static event EventHandler<EventArgs> Attack;
+    // Use this for initialization
+    void Start ()
     {
         party = GetComponentInChildren<PartyComponent>();
         world = GetComponentInChildren<SpiralWorldManager>();
@@ -52,6 +54,8 @@ public class WorldPartyActions : MonoBehaviour {
                 party.party.Attack(item);
             }
         }
+
+        TriggerPartyAttack();
     }
     public void PartyHarvest()
     {
@@ -63,5 +67,11 @@ public class WorldPartyActions : MonoBehaviour {
                 party.party.Harvest(item);
             }
         }
+    }
+
+    void TriggerPartyAttack()
+    {
+        if (Attack != null)
+            Attack.Invoke(this, new EventArgs());
     }
 }

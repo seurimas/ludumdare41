@@ -101,6 +101,7 @@ public class RhythmManager : MonoBehaviour {
         EatBeat();
         bool wantClear = false;
         notes.Add(note);
+        Debug.Log(notes.Count);
         foreach (IRhythmListener listener in listeners)
         {
             wantClear |= listener.OnNote(note, notes);
