@@ -9,38 +9,44 @@ public class PartyMember : MonoBehaviour {
     public float speed;
     int threshold = 1;
     bool onTarget = false;
+    public bool interrupt = false;
+    public bool routineActive = false;
+    string activeCoroutine;
 
 	// Use this for initialization
 	void Start () {
-
+        StartCoroutine(MoveToX(2));
     }
 
     // Update is called once per frame
     void Update () {
-        MoveTo(targetX);
+
     }
 
-    void MoveTo(int targetX)
+    void Interrupt()
     {
-        if (Mathf.Abs(targetX - transform.position.x) > threshold)
+        interrupt = true;
+        while (routineActive)
+        interrupt = false;
+    }
+
+
+    IEnumerator MoveToX(int targetX)
+    {
+        if (routineActive)
         {
-            if (targetX > transform.position.x)
-            {
-                transform.Translate(Time.deltaTime * speed, 0, 0);
-            }
-            else if (targetX < transform.position.x)
-            {
-                transform.Translate(-Time.deltaTime * speed, 0, 0);
-            }
-
-            Debug.Log("I'm not on target");
-
+            Interrupt();
         }
         else
         {
-            Debug.Log("I'm on target");
+            while (!interrupt && (int)transform.position.x != targetX)
+            {
+                routineActive = true;
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetX, transform.position.y), Time.deltaTime * speed);
+                yield return 0;
+            }
         }
 
-
+        routineActive = false;
     }
 }
