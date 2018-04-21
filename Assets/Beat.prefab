@@ -44,6 +44,8 @@ MonoBehaviour:
   note: 0
   hit: 0
   failed: 0
+  noNote: {fileID: 21300002, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
+  failedNote: {fileID: 21300012, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   bardNote: {fileID: 21300004, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   clericNote: {fileID: 21300006, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   rogueNote: {fileID: 21300008, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}

@@ -68,7 +68,6 @@ public class RhythmManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(string.Format("{0} {1} {2} {3} {4}", currentBeat, nextBeat, beatStarted, beatPerfected, Time.time));
         if (Time.time > nextBeat - beatLagLeeway && !beatStarted)
         {
             StartBeat();
