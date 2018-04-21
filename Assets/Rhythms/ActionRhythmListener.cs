@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class ActionRhythmListener : MonoBehaviour, IRhythmListener
 {
-    public Dictionary<Notes[], Action<List<Notes>>> actions = new Dictionary<Notes[], Action<List<Notes>>>();
-    public SpiralWorldManager world;
+    public Dictionary<Notes[], Action<List<Notes>>> rhythms = new Dictionary<Notes[], Action<List<Notes>>>();
+    public WorldPartyActions worldActions;
     // Use this for initialization
     void Start()
     {
@@ -14,29 +14,29 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
         Notes E = Notes.Rogue;
         Notes W = Notes.Cleric;
         Notes Q = Notes.Bard;
-        actions.Add(new Notes[] { R, R, R, Q },
-            (rhythm) => world.AdvanceParty()
+        rhythms.Add(new Notes[] { R, R, R, Q },
+            (rhythm) => worldActions.AdvanceParty()
         );
-        actions.Add(new Notes[] { Q, R, Q, R },
-            (rhythm) => world.RetreatParty()
+        rhythms.Add(new Notes[] { Q, R, Q, R },
+            (rhythm) => worldActions.RetreatParty()
         );
-        actions.Add(new Notes[] { E, E, R, E },
-            (rhythm) => world.PartyAttack() // Attack
+        rhythms.Add(new Notes[] { E, E, R, E },
+            (rhythm) => worldActions.PartyAttack() // Attack
         );
-        actions.Add(new Notes[] { W, W, R, Q },
-            (rhythm) => world.PartyAttack() // Defend
+        rhythms.Add(new Notes[] { W, W, R, Q },
+            (rhythm) => worldActions.PartyAttack() // Defend
         );
-        actions.Add(new Notes[] { W, W, E, E },
-            (rhythm) => world.PartyHarvest() // Harvest
+        rhythms.Add(new Notes[] { W, W, E, E },
+            (rhythm) => worldActions.PartyHarvest() // Harvest
         );
-        actions.Add(new Notes[] { Q, Q, E, E },
-            (rhythm) => world.PartyAttack() // Special 2
+        rhythms.Add(new Notes[] { Q, Q, E, E },
+            (rhythm) => worldActions.PartyAttack() // Special 2
         );
-        actions.Add(new Notes[] { R, E, W, Q },
-            (rhythm) => world.PartyAttack() // Special 3
+        rhythms.Add(new Notes[] { R, E, W, Q },
+            (rhythm) => worldActions.PartyAttack() // Special 3
         );
-        actions.Add(new Notes[] { Q, W, E, R },
-            (rhythm) => world.PartyAttack() // Special 4
+        rhythms.Add(new Notes[] { Q, W, E, R },
+            (rhythm) => worldActions.PartyAttack() // Special 4
         );
         GetComponent<RhythmManager>().AddListener(this);
     }
@@ -56,23 +56,23 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
 
     public bool OnNote(Notes note, List<Notes> fullRhythm)
     {
-        foreach (KeyValuePair<Notes[], Action<List<Notes>>> action in actions)
+        foreach (KeyValuePair<Notes[], Action<List<Notes>>> rhythm in rhythms)
         {
-            if (fullRhythm.Count != action.Key.Length)
+            if (fullRhythm.Count != rhythm.Key.Length)
             {
                 continue;
             }
             bool isAction = true;
             for (int i = 0;i < fullRhythm.Count;i++)
             {
-                if (action.Key[i] != fullRhythm[i])
+                if (rhythm.Key[i] != fullRhythm[i])
                 {
                     isAction = false;
                 }
             }
             if (isAction)
             {
-                action.Value(fullRhythm);
+                rhythm.Value(fullRhythm);
                 return true;
             }
         }
