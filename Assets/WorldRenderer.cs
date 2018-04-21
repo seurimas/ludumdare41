@@ -4,18 +4,19 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class WorldRenderer : MonoBehaviour {
-    private SpiralWorldManager world;
     private Tilemap floorTilemap;
     private Tilemap backgroundTilemap;
+    private Tilemap foregroundTilemap;
     public float leftWorldX;
     public float rightWorldX;
     public Sprite floorSprite;
     public Sprite skySprite;
+    public Sprite[] foregroundSprites;
 	// Use this for initialization
 	void Start () {
-        world = GetComponent<SpiralWorldManager>();
         floorTilemap = transform.GetChild(0).GetChild(0).GetComponent<Tilemap>();
         backgroundTilemap = transform.GetChild(1).GetChild(0).GetComponent<Tilemap>();
+        foregroundTilemap = transform.GetChild(2).GetChild(0).GetComponent<Tilemap>();
         generateBeach();
     }
 
@@ -29,6 +30,15 @@ public class WorldRenderer : MonoBehaviour {
             Tile skyTile = ScriptableObject.CreateInstance<Tile>();
             skyTile.sprite = skySprite;
             backgroundTilemap.SetTile(new Vector3Int(i, 0, 0), skyTile);
+        }
+        for (int i = 0;i < 128; i++)
+        {
+            if (Random.value < 0.3f)
+            {
+                Tile foregroundTile = ScriptableObject.CreateInstance<Tile>();
+                foregroundTile.sprite = foregroundSprites[Random.Range(0, foregroundSprites.Length)];
+                foregroundTilemap.SetTile(new Vector3Int(i, 0, 0), foregroundTile);
+            }
         }
     }
 	
