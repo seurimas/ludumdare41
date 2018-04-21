@@ -29,8 +29,6 @@ public abstract class WorldItem
     {
         return (ATTACKABLE & GetFlags()) != 0;
     }
-
-
 }
 
 
