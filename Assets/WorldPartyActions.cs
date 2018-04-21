@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class WorldPartyActions : MonoBehaviour {
-    public SpiralWorldManager world;
-    public PartyComponent party;
+    private SpiralWorldManager world;
+    private PartyComponent party;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
+        party = GetComponentInChildren<PartyComponent>();
+        world = GetComponentInChildren<SpiralWorldManager>();
         world.world.AddItem(party.party);
 	}
 	

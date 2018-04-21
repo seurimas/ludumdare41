@@ -7,16 +7,14 @@ public class WorldRenderer : MonoBehaviour {
     private Tilemap floorTilemap;
     private Tilemap backgroundTilemap;
     private Tilemap foregroundTilemap;
-    public float leftWorldX;
-    public float rightWorldX;
     public Sprite floorSprite;
     public Sprite skySprite;
     public Sprite[] foregroundSprites;
 	// Use this for initialization
 	void Start () {
-        floorTilemap = transform.GetChild(0).GetChild(0).GetComponent<Tilemap>();
-        backgroundTilemap = transform.GetChild(1).GetChild(0).GetComponent<Tilemap>();
-        foregroundTilemap = transform.GetChild(2).GetChild(0).GetComponent<Tilemap>();
+        floorTilemap = transform.Find("FloorGrid").GetChild(0).GetComponent<Tilemap>();
+        backgroundTilemap = transform.Find("SkyGrid").GetChild(0).GetComponent<Tilemap>();
+        foregroundTilemap = transform.Find("ForegroundGrid").GetChild(0).GetComponent<Tilemap>();
         generateBeach();
     }
 
