@@ -11,7 +11,6 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
     {
         actions.Add(new Notes[] { Notes.Fighter, Notes.Fighter, Notes.Fighter, Notes.Bard }, (str) => Debug.Log(str));
         GetComponent<RhythmManager>().AddListener(this);
-        Debug.Log("Started!");
     }
 
     // Update is called once per frame
@@ -21,17 +20,14 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
 
     public void OnBeatEarly()
     {
-        Debug.Log(".");
     }
 
     public void OnBeatRight()
     {
-        Debug.Log("!");
     }
 
     public void OnFailure(List<Notes> failedRhythm, bool tooEarly)
     {
-        Debug.Log("F");
     }
 
     public bool OnNote(Notes note, List<Notes> fullRhythm)
