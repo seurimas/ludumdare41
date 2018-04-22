@@ -7,6 +7,7 @@ public class WorldPartyActions : MonoBehaviour {
     private SpiralWorldManager world;
     private PartyComponent party;
     public static event EventHandler<EventArgs> Attack;
+    public static event EventHandler<EventArgs> Move;
     // Use this for initialization
     void Start ()
     {
@@ -37,12 +38,14 @@ public class WorldPartyActions : MonoBehaviour {
         int currentPosition = party.party.GetPosition();
         if (CanPartyEnter(currentPosition + 1))
             party.party.NumberLinePosition++;
+        TriggerPartyMove();
     }
     public void RetreatParty()
     {
         int currentPosition = party.party.GetPosition();
         if (CanPartyEnter(currentPosition - 1))
             party.party.NumberLinePosition--;
+        TriggerPartyMove();
     }
     public void PartyAttack()
     {
@@ -73,5 +76,11 @@ public class WorldPartyActions : MonoBehaviour {
     {
         if (Attack != null)
             Attack.Invoke(this, new EventArgs());
+    }
+
+    void TriggerPartyMove()
+    {
+        if (Move != null)
+            Move.Invoke(this, new EventArgs());
     }
 }

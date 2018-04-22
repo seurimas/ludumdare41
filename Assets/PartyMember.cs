@@ -10,7 +10,7 @@ public class PartyMember : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(Pendulum(4));
+        WorldPartyActions.Attack += OnPartyAttack;
     }
 
     // Update is called once per frame
@@ -124,5 +124,10 @@ public class PartyMember : MonoBehaviour {
 
             yield return new WaitForSeconds(waitTime);
         }
+    }
+
+    void OnPartyAttack(object sender, EventArgs e)
+    {
+        Attack();
     }
 }
