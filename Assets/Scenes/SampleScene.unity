@@ -1083,7 +1083,8 @@ MonoBehaviour:
   forestFloorSprite: {fileID: 21300018, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   forestSkySprite: {fileID: 21300020, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   forestForegroundSprites:
-  - {fileID: 21300022, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  - {fileID: 21300028, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  - {fileID: 21300030, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   beachForestFloorSprite: {fileID: 21300024, guid: e17e0b98eb8f8824283ae99e62376f4d,
     type: 3}
   beachForestSkySprite: {fileID: 21300026, guid: e17e0b98eb8f8824283ae99e62376f4d,

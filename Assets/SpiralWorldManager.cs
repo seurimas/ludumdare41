@@ -14,33 +14,47 @@ public class SpiralWorldManager : MonoBehaviour {
 	void Start () {
         party = GetComponentInChildren<PartyComponent>();
         world.AddItem(party.party);
-        Plant dummyPlant0 = new Plant
+        world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.HONEY,
             NumberLinePosition = 0,
-        };
-        world.AddItem(dummyPlant0);
-        Plant dummyPlant1 = new Plant
+        });
+        world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.SAFRON,
             NumberLinePosition = 1,
-        };
-        world.AddItem(dummyPlant1);
-        Plant dummyPlant2 = new Plant
+        });
+        world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.JUICE,
             NumberLinePosition = 2,
-        };
-        world.AddItem(dummyPlant2);
-        Animal dummyAnimal0 = new Animal
+        });
+        world.AddItem(new Plant
+        {
+            harvested = false,
+            resource = PlantResource.RUBY,
+            NumberLinePosition = 4,
+        });
+        world.AddItem(new Plant
+        {
+            harvested = false,
+            resource = PlantResource.SAPPHIRE,
+            NumberLinePosition = 5,
+        });
+        world.AddItem(new Plant
+        {
+            harvested = false,
+            resource = PlantResource.GARNET,
+            NumberLinePosition = 6,
+        });
+        world.AddItem(new Animal
         {
             NumberLinePosition = 3,
             animalType = AnimalType.BOUNCING_BUNNY,
-        };
-        world.AddItem(dummyAnimal0);
+        });
     }
     
 	// Update is called once per frame
