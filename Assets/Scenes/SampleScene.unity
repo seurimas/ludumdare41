@@ -1023,12 +1023,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a51b07246706f443a134213499966e6, type: 3}
   m_Name:
   m_EditorClassIdentifier:
-  floorSprite: {fileID: 21300000, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
-  skySprite: {fileID: 21300008, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
-  foregroundSprites:
+  beachFloorSprite: {fileID: 21300000, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  beachSkySprite: {fileID: 21300008, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  beachForegroundSprites:
   - {fileID: 21300002, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   - {fileID: 21300004, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   - {fileID: 21300006, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  forestFloorSprite: {fileID: 21300018, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  forestSkySprite: {fileID: 21300020, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  forestForegroundSprites:
+  - {fileID: 21300022, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  beachForestFloorSprite: {fileID: 21300024, guid: e17e0b98eb8f8824283ae99e62376f4d,
+    type: 3}
+  beachForestSkySprite: {fileID: 21300026, guid: e17e0b98eb8f8824283ae99e62376f4d,
+    type: 3}
 --- !u!1 &1311871440
 GameObject:
   m_ObjectHideFlags: 0
