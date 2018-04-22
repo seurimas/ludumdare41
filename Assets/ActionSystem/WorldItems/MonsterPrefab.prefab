@@ -105,6 +105,8 @@ MonoBehaviour:
   laserWolfIdle0: {fileID: 21300014, guid: 8489f8848ccd9f942a346dc1eae9d8c3, type: 3}
   laserWolfIdle1: {fileID: 21300016, guid: 8489f8848ccd9f942a346dc1eae9d8c3, type: 3}
   laserWolfAttack: {fileID: 21300018, guid: 8489f8848ccd9f942a346dc1eae9d8c3, type: 3}
+  laserSound: {fileID: 8300000, guid: 1b66a2a2c29026c46876654ddbda94b5, type: 3}
+  audioSource: {fileID: 0}
   laserPrefab: {fileID: 1439981211304544, guid: f78fb80a082ab0540ae4f4a814ea9141,
     type: 2}
   health: 6

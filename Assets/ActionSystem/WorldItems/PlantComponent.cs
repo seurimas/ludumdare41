@@ -20,7 +20,7 @@ public class Plant : WorldItem
     public PlantResource resource;
     public override int GetFlags()
     {
-        return WorldItem.HARVESTABLE;
+        return harvested ? 0 : WorldItem.HARVESTABLE;
     }
 }
 

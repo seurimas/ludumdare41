@@ -20,11 +20,14 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     public Sprite laserWolfIdle0;
     public Sprite laserWolfIdle1;
     public Sprite laserWolfAttack;
+    public AudioClip laserSound;
+    public AudioSource audioSource;
     public GameObject laserPrefab;
     private int animationState = 0;
     private const int idleFrames = 2;
     private Sprite[] animationFrames;
     private GameObject attackPrefab;
+    private AudioClip attackSound;
     private SpriteRenderer spriteRenderer;
     private Monster monster;
     public int health = 6;
@@ -50,6 +53,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     // Use this for initialization
     void Start () {
         RhythmManager.instance.AddListener(this);
+        audioSource = RhythmManager.instance.GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         monster = GetComponent<WorldItemComponent>().GetItem<Monster>();
         switch (monster.monsterType)
@@ -57,6 +61,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
             case MonsterType.LASER_WOLF:
                 animationFrames = new Sprite[] { laserWolfIdle0, laserWolfIdle1, laserWolfAttack };
                 attackPrefab = laserPrefab;
+                attackSound = laserSound;
                 break;
         }
         transform.position = new Vector3(monster.PositionX, 0);
@@ -77,8 +82,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     {
         if (Mathf.Abs(transform.position.x - monster.PositionX) < 0.33f)
         {
-            List<WorldItem> inRange = SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - 3, monster.NumberLinePosition + 3);
-            foreach (WorldItem item in inRange)
+            foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - 1, monster.NumberLinePosition + 1))
             {
                 if (item is Party)
                 {
@@ -87,12 +91,29 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
                     bullet.transform.position = transform.position;
                     if (target.transform.position.x < transform.position.x)
                     {
-                        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0));
-                    } else
+                        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 1));
+                    }
+                    else
                     {
-                        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
+                        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 1));
                     }
                     animationState = idleFrames;
+                    audioSource.PlayOneShot(attackSound);
+                    return;
+                }
+            }
+            foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - 3, monster.NumberLinePosition + 3))
+            {
+                if (item is Party)
+                {
+                    if (item.NumberLinePosition > monster.NumberLinePosition)
+                    {
+                        monster.NumberLinePosition++;
+                    }
+                    else
+                    {
+                        monster.NumberLinePosition--;
+                    }
                 }
             }
         }

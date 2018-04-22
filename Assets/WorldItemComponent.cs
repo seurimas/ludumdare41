@@ -26,5 +26,9 @@ public class WorldItemComponent : MonoBehaviour {
         {
             GetComponent<AnimalComponent>().Damage(amount);
         }
+        if (GetComponent<MonsterComponent>() != null)
+        {
+            GetComponent<MonsterComponent>().Damage(amount);
+        }
     }
 }
