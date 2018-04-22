@@ -14,7 +14,6 @@ public class WorldPartyActions : MonoBehaviour {
     {
         party = GetComponentInChildren<PartyComponent>();
         world = GetComponent<SpiralWorldManager>();
-        world.world.AddItem(party.party);
 	}
 	
 	// Update is called once per frame
@@ -56,6 +55,7 @@ public class WorldPartyActions : MonoBehaviour {
             if (item.IsAttackable())
             {
                 party.party.Attack(item);
+                return;
             }
         }
 
@@ -68,8 +68,8 @@ public class WorldPartyActions : MonoBehaviour {
         {
             if (item.IsHarvestable())
             {
-                Debug.Log(item);
                 party.party.Harvest(item);
+                return;
             }
         }
     }

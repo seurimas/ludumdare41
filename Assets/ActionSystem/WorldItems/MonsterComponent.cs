@@ -1,0 +1,122 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum MonsterType
+{
+    LASER_WOLF,
+}
+
+public class Monster : WorldItem
+{
+    public MonsterType monsterType;
+    public override int GetFlags()
+    {
+        return WorldItem.ATTACKABLE | WorldItem.BLOCK_PARTY;
+    }
+}
+
+public class MonsterComponent : MonoBehaviour, IRhythmListener {
+    public Sprite laserWolfIdle0;
+    public Sprite laserWolfIdle1;
+    public Sprite laserWolfAttack;
+    public GameObject laserPrefab;
+    private int animationState = 0;
+    private const int idleFrames = 2;
+    private Sprite[] animationFrames;
+    private GameObject attackPrefab;
+    private SpriteRenderer spriteRenderer;
+    private Monster monster;
+    public int health = 6;
+
+    public void OnBeatRight(int beatNumber)
+    {
+        animationState = (animationState + 1) % idleFrames;
+        if (beatNumber % 4 == 0)
+        {
+            AI();
+        }
+    }
+
+    public void OnFailure(List<Notes> failedRhythm, bool tooEarly)
+    {
+    }
+
+    public bool OnNote(Notes note, List<Notes> fullRhythm)
+    {
+        return false;
+    }
+
+    // Use this for initialization
+    void Start () {
+        RhythmManager.instance.AddListener(this);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        monster = GetComponent<WorldItemComponent>().GetItem<Monster>();
+        switch (monster.monsterType)
+        {
+            case MonsterType.LASER_WOLF:
+                animationFrames = new Sprite[] { laserWolfIdle0, laserWolfIdle1, laserWolfAttack };
+                attackPrefab = laserPrefab;
+                break;
+        }
+        transform.position = new Vector3(monster.PositionX, 0);
+	}
+
+    public void Damage(int amount)
+    {
+        health -= amount;
+    }
+
+    void OnDestroy()
+    {
+        RhythmManager.instance.RemoveListener(this);
+        SpiralWorldManager.instance.RemoveObject(monster.GetId());
+    }
+
+    void AI()
+    {
+        if (Mathf.Abs(transform.position.x - monster.PositionX) < 0.33f)
+        {
+            List<WorldItem> inRange = SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - 3, monster.NumberLinePosition + 3);
+            foreach (WorldItem item in inRange)
+            {
+                if (item is Party)
+                {
+                    GameObject target = SpiralWorldManager.instance.GetWorldGameObject(item.GetId());
+                    GameObject bullet = Instantiate(attackPrefab, SpiralWorldManager.instance.transform);
+                    bullet.transform.position = transform.position;
+                    if (target.transform.position.x < transform.position.x)
+                    {
+                        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(-1, 0));
+                    } else
+                    {
+                        bullet.GetComponent<Rigidbody2D>().AddForce(new Vector2(1, 0));
+                    }
+                    animationState = idleFrames;
+                }
+            }
+        }
+    }
+
+    // Update is called once per frame
+    void Update () {
+        spriteRenderer.sprite = animationFrames[animationState];
+        if (transform.position.x != monster.PositionX)
+        {
+            if (Mathf.Abs(transform.position.x - monster.PositionX) < Time.deltaTime)
+            {
+                transform.position = new Vector3(monster.PositionX, transform.position.y);
+            } else if (transform.position.x > monster.PositionX)
+            {
+                transform.Translate(-Time.deltaTime, 0, 0);
+            } else
+            {
+                transform.Translate(Time.deltaTime, 0, 0);
+            }
+        }
+        if (health < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+}

@@ -5,6 +5,7 @@ using UnityEngine;
 public enum AnimalType
 {
     BOUNCING_BUNNY,
+    JUMPING_WORM,
 }
 
 public class Animal : WorldItem
@@ -19,7 +20,10 @@ public class Animal : WorldItem
 public class AnimalComponent : MonoBehaviour, IRhythmListener {
     public Sprite bunnyIdle0;
     public Sprite bunnyIdle1;
+    public Sprite wormIdle0;
+    public Sprite wormIdle1;
     private int animationState = 0;
+    private const int idleFrames = 2;
     private Sprite[] animationFrames;
     private SpriteRenderer spriteRenderer;
     private Animal animal;
@@ -27,7 +31,7 @@ public class AnimalComponent : MonoBehaviour, IRhythmListener {
 
     public void OnBeatRight(int beatNumber)
     {
-        animationState = (animationState + 1) % animationFrames.Length;
+        animationState = (animationState + 1) % idleFrames;
     }
 
     public void OnFailure(List<Notes> failedRhythm, bool tooEarly)
@@ -48,6 +52,9 @@ public class AnimalComponent : MonoBehaviour, IRhythmListener {
         {
             case AnimalType.BOUNCING_BUNNY:
                 animationFrames = new Sprite[] { bunnyIdle0, bunnyIdle1 };
+                break;
+            case AnimalType.JUMPING_WORM:
+                animationFrames = new Sprite[] { wormIdle0, wormIdle1 };
                 break;
         }
         transform.position = new Vector3(animal.PositionX, 0);
