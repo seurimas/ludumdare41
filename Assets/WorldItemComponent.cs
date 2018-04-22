@@ -19,16 +19,17 @@ public class WorldItemComponent : MonoBehaviour {
         return (TItem) worldItem;
     }
 
-    public void Damage(int amount)
+    public bool Damage(int amount)
     {
         Debug.Log(amount);
         if (GetComponent<AnimalComponent>() != null)
         {
-            GetComponent<AnimalComponent>().Damage(amount);
+            return GetComponent<AnimalComponent>().Damage(amount);
         }
         if (GetComponent<MonsterComponent>() != null)
         {
-            GetComponent<MonsterComponent>().Damage(amount);
+            return GetComponent<MonsterComponent>().Damage(amount);
         }
+        return false;
     }
 }

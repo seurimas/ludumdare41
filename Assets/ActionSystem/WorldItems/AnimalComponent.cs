@@ -60,9 +60,10 @@ public class AnimalComponent : MonoBehaviour, IRhythmListener {
         transform.position = new Vector3(animal.PositionX, 0);
 	}
 
-    public void Damage(int amount)
+    public bool Damage(int amount)
     {
         health -= amount;
+        return true;
     }
 
     void OnDestroy()

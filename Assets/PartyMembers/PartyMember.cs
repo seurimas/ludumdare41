@@ -23,14 +23,28 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
         RhythmManager.instance.RemoveListener(this);
     }
 
-    public void Damage(int amount)
+    public bool IsDead()
     {
+        return party.party.GetStatus(role).health <= 0;
+    }
+
+    public bool Damage(int amount)
+    {
+        if (IsDead())
+        {
+            return false;
+        }
         animation.Hurt();
         party.party.Damage(role, amount);
+        return true;
     }
 
     public void Attack(GameObject target)
     {
+        if (IsDead())
+        {
+            return;
+        }
         animation.Attack();
         float distance = target.transform.position.x - transform.position.x;
         GameObject newItem = Instantiate(attackObject, party.transform.parent);
@@ -68,6 +82,8 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
 
     bool MyTurn(int beatNumber)
     {
+        if (IsDead())
+            return false;
         switch (role)
         {
             case Notes.Bard:

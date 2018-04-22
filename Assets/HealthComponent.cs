@@ -20,12 +20,12 @@ public class HealthComponent : MonoBehaviour {
     {
         if (partyMember != null && !projectile.friendly)
         {
-            partyMember.Damage(projectile.damage);
-            Destroy(projectile.gameObject);
+            if (partyMember.Damage(projectile.damage))
+                Destroy(projectile.gameObject);
         } else if (worldItem != null && projectile.friendly)
         {
-            worldItem.Damage(projectile.damage);
-            Destroy(projectile.gameObject);
+            if (worldItem.Damage(projectile.damage))
+                Destroy(projectile.gameObject);
         }
     }
 }

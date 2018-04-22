@@ -14,19 +14,27 @@ public enum Loot
     GOLD,
 }
 
+public class PartyMemberStatus
+{
+    public int maxHealth = 10;
+    public int health = 10;
+    public int maxHunger = 100;
+    public int hunger = 100;
+}
+
 public class Party : WorldItem
 {
     public int? attackTarget;
     public int? harvestTarget;
     public List<Loot> loot = new List<Loot>();
-    public Dictionary<Notes, int> partyStatus = new Dictionary<Notes, int>();
+    public Dictionary<Notes, PartyMemberStatus> partyStatus = new Dictionary<Notes, PartyMemberStatus>();
 
     public Party()
     {
-        partyStatus.Add(Notes.Bard, 10);
-        partyStatus.Add(Notes.Cleric, 10);
-        partyStatus.Add(Notes.Rogue, 10);
-        partyStatus.Add(Notes.Fighter, 10);
+        partyStatus.Add(Notes.Bard, new PartyMemberStatus());
+        partyStatus.Add(Notes.Cleric, new PartyMemberStatus());
+        partyStatus.Add(Notes.Rogue, new PartyMemberStatus());
+        partyStatus.Add(Notes.Fighter, new PartyMemberStatus());
     }
 
     public override int GetFlags()
@@ -34,9 +42,14 @@ public class Party : WorldItem
         return 0;
     }
 
+    public PartyMemberStatus GetStatus(Notes role)
+    {
+        return partyStatus[role];
+    }
+
     public void Damage(Notes role, int amount)
     {
-        partyStatus[role] -= amount;
+        partyStatus[role].health -= amount;
     }
 
     public void Attack(WorldItem target)
@@ -64,13 +77,13 @@ public class Party : WorldItem
                 case PlantResource.HONEY:
                 case PlantResource.JUICE:
                 case PlantResource.SAFRON:
-                    return partyStatus[Notes.Rogue] > 0;
+                    return partyStatus[Notes.Rogue].health > 0;
                 case PlantResource.RUBY:
                 case PlantResource.SAPPHIRE:
                 case PlantResource.GARNET:
-                    return partyStatus[Notes.Cleric] > 0;
+                    return partyStatus[Notes.Cleric].health > 0;
                 case PlantResource.TREE:
-                    return partyStatus[Notes.Bard] > 0;
+                    return partyStatus[Notes.Bard].health > 0;
             }
         }
         return false;

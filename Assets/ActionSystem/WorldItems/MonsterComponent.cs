@@ -67,9 +67,10 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
         transform.position = new Vector3(monster.PositionX, 0);
 	}
 
-    public void Damage(int amount)
+    public bool Damage(int amount)
     {
         health -= amount;
+        return true;
     }
 
     void OnDestroy()

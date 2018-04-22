@@ -18,6 +18,14 @@ TextureImporter:
     21300026: RhythmRest
     21300028: RhythmCreate
     21300030: Prepared
+    21300032: FighterSymbol
+    21300034: BardSymbol
+    21300036: ClericSymbol
+    21300038: RogueSymbol
+    21300040: HealthIndicator
+    21300042: HealthSymbol
+    21300044: FoodIndicator
+    21300046: FoodSymbol
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -414,16 +422,176 @@ TextureImporter:
         serializedVersion: 2
         x: 128
         y: 192
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 33
+        height: 10
+      alignment: 9
+      pivot: {x: 0.5, y: 1.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: c7d2ea55b74ae4847a35ccdd214fb7a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FighterSymbol
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 210
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d1acdf0ff45796438b6048b42d2fc69
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BardSymbol
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 207
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530c78a4f4e72ab4db1e23e7f14d4e42
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClericSymbol
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 209
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c567b288308f6a8448bc9f13b554fbba
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RogueSymbol
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 209
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6426232371e0de349b4bb793e9ffa9ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthIndicator
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 212
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe2e155eff77fb42a614687e7949f55
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthSymbol
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 212
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514019d52e8a2e14fa8e16a66f9036c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodIndicator
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 193
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1954413bb65461649a0e91fa6acc4f16
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FoodSymbol
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 195
+        width: 7
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d331ae77945828740b31dd65d0152d02
       vertices: []
       indices: 
       edges: []
