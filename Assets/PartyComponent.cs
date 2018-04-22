@@ -8,7 +8,9 @@ public class PartyComponent : MonoBehaviour {
     List<PartyMember> PartyMembers = new List<PartyMember>();
 	// Use this for initialization
 	void Start () {
-        WorldPartyActions.Move += OnPartyMove;
+        WorldPartyActions.Forward += OnPartyForward;
+        WorldPartyActions.Backward += OnPartyBackward;
+        WorldPartyActions.Attack += OnPartyAttack;
         GetChildren();
     }
 
@@ -25,9 +27,29 @@ public class PartyComponent : MonoBehaviour {
         }
     }
 
-    void OnPartyMove(object sender, EventArgs e)
+    void OnPartyAttack(object sender, EventArgs e)
     {
-        Debug.Log("Number line position: " + party.NumberLinePosition);
+        foreach (PartyMember pm in PartyMembers)
+        {
+            pm.Attack();
+        }
+    }
 
+    void OnPartyForward(object sender, EventArgs e)
+    {
+        Debug.Log("Forward");
+        foreach(PartyMember pm in PartyMembers)
+        {
+            pm.Forward();
+        }
+    }
+
+    void OnPartyBackward(object sender, EventArgs e)
+    {
+        Debug.Log("Backward");
+        foreach (PartyMember pm in PartyMembers)
+        {
+            pm.Backward();
+        }
     }
 }
