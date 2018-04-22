@@ -68,6 +68,12 @@ MonoBehaviour:
   safronSprite: {fileID: 21300014, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   juiceSprite: {fileID: 21300016, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   emptySprite: {fileID: 21300010, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  treeSprite: {fileID: 21300022, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  emptyTreeSprite: {fileID: 21300040, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  rubySprite: {fileID: 21300032, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  sapphireSprite: {fileID: 21300036, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  garnetSprite: {fileID: 21300034, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  emptyForestSprite: {fileID: 21300038, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
 --- !u!212 &212256401920271246
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -7,6 +7,10 @@ public enum Loot
     HONEY,
     SAFRON,
     JUICE,
+    RUBY,
+    SAPPHIRE,
+    GARNET,
+    WOOD,
     GOLD,
 }
 
@@ -48,9 +52,21 @@ public class Party : WorldItem
 
     private bool CanHarvest(WorldItem target)
     {
-        if (target is Plant)
+        if (target is Plant && !((Plant)target).harvested)
         {
-            return !((Plant)target).harvested && partyStatus[Notes.Rogue];
+            switch (((Plant)target).resource)
+            {
+                case PlantResource.HONEY:
+                case PlantResource.JUICE:
+                case PlantResource.SAFRON:
+                    return partyStatus[Notes.Rogue];
+                case PlantResource.RUBY:
+                case PlantResource.SAPPHIRE:
+                case PlantResource.GARNET:
+                    return partyStatus[Notes.Cleric];
+                case PlantResource.TREE:
+                    return partyStatus[Notes.Bard];
+            }
         }
         return false;
     }
@@ -76,6 +92,14 @@ public class Party : WorldItem
                     return Loot.JUICE;
                 case PlantResource.SAFRON:
                     return Loot.SAFRON;
+                case PlantResource.RUBY:
+                    return Loot.RUBY;
+                case PlantResource.SAPPHIRE:
+                    return Loot.SAPPHIRE;
+                case PlantResource.GARNET:
+                    return Loot.GARNET;
+                case PlantResource.TREE:
+                    return Loot.WOOD;
             }
         }
         return Loot.GOLD;
