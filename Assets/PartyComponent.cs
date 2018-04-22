@@ -5,19 +5,29 @@ using UnityEngine;
 
 public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
-    public PartyMember Nick;
+    List<PartyMember> PartyMembers = new List<PartyMember>();
 	// Use this for initialization
 	void Start () {
         WorldPartyActions.Move += OnPartyMove;
+        GetChildren();
     }
 
-	// Update is called once per frame
-	void Update () {
-	}
+    void GetChildren()
+    {
+        foreach (Transform child in transform)
+        {
+            PartyMember member = child.GetComponent<PartyMember>();
+            if (member != null)
+            {
+                PartyMembers.Add(member);
+            }
+
+        }
+    }
 
     void OnPartyMove(object sender, EventArgs e)
     {
         Debug.Log("Number line position: " + party.NumberLinePosition);
-        Nick.Move(party.NumberLinePosition);
+
     }
 }
