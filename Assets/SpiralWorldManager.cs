@@ -7,6 +7,7 @@ public class SpiralWorldManager : MonoBehaviour {
     private readonly Dictionary<int, GameObject> worldObjects = new Dictionary<int, GameObject>();
     private PartyComponent party;
     public GameObject plantPrefab;
+    public GameObject animalPrefab;
     public int renderStart;
     public int renderEnd;
 	// Use this for initialization
@@ -34,6 +35,12 @@ public class SpiralWorldManager : MonoBehaviour {
             NumberLinePosition = 2,
         };
         world.AddItem(dummyPlant2);
+        Animal dummyAnimal0 = new Animal
+        {
+            NumberLinePosition = 3,
+            animalType = AnimalType.BOUNCING_BUNNY,
+        };
+        world.AddItem(dummyAnimal0);
     }
     
 	// Update is called once per frame
@@ -65,6 +72,11 @@ public class SpiralWorldManager : MonoBehaviour {
         if (worldItem is Plant)
         {
             spawned = Instantiate(plantPrefab, transform);
+            spawned.GetComponent<WorldItemComponent>().worldItem = worldItem;
+        }
+        if (worldItem is Animal)
+        {
+            spawned = Instantiate(animalPrefab, transform);
             spawned.GetComponent<WorldItemComponent>().worldItem = worldItem;
         }
         return spawned;

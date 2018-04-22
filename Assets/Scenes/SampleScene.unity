@@ -921,6 +921,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plantPrefab: {fileID: 1680121195073002, guid: ebe71d1bf79cf774786c3f075968c953,
     type: 2}
+  animalPrefab: {fileID: 1039689510826390, guid: 860c01dbe5fa676418f907c78c343539,
+    type: 2}
+  renderStart: 0
+  renderEnd: 0
 --- !u!4 &1150944599
 Transform:
   m_ObjectHideFlags: 0

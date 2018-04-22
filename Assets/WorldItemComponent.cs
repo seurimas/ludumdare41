@@ -13,4 +13,9 @@ public class WorldItemComponent : MonoBehaviour {
     {
         
     }
+
+    public TItem GetItem<TItem>() where TItem : WorldItem
+    {
+        return (TItem) worldItem;
+    }
 }
