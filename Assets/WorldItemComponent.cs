@@ -18,4 +18,13 @@ public class WorldItemComponent : MonoBehaviour {
     {
         return (TItem) worldItem;
     }
+
+    public void Damage(int amount)
+    {
+        Debug.Log(amount);
+        if (GetComponent<AnimalComponent>() != null)
+        {
+            GetComponent<AnimalComponent>().Damage(amount);
+        }
+    }
 }

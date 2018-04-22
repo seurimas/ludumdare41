@@ -22,7 +22,7 @@ public class RhythmRenderer : MonoBehaviour, IRhythmListener {
     {
     }
 
-    public void OnBeatRight()
+    public void OnBeatRight(int beatNumber)
     {
     }
 

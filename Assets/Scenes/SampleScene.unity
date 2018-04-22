@@ -255,6 +255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149e4ca9d099245458b05ec61b2b59e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spiralWorldManager: {fileID: 0}
+  weaponPrefab: {fileID: 0}
 --- !u!4 &21880310
 Transform:
   m_ObjectHideFlags: 0
@@ -283,6 +285,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19204595b8c25c547bb65902c0dd8f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &25680088 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1399041741}
 --- !u!1 &73778153
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +523,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -530,6 +538,20 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57ae259cd49aa2544bbc8458ce5e9b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party: {fileID: 21880309}
+  position0: {x: 8, y: 3.5, z: 0}
+  movementSpeed: 4
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -573,7 +595,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 3.5, z: -10}
+  m_LocalPosition: {x: 8, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -588,7 +610,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -639,7 +661,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1049,6 +1071,7 @@ Transform:
   - {fileID: 888754486}
   - {fileID: 1747061495}
   - {fileID: 73778154}
+  - {fileID: 25680088}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1098,7 +1121,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1193,7 +1216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40a3bd89ed5cc741a0dce26f6034426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceBetween: 128
+  spaceBetween: 256
   target: {fileID: 21300000, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   beatPrefab: {fileID: 1285053790084512, guid: 19d6e86b579914f46b75633689274b3a, type: 2}
 --- !u!1 &1366811936
@@ -1304,6 +1327,53 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1399041741
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1150944599}
+    m_Modifications:
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164195199942590, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114823077992983402, guid: 7706b31298a18a34d8394e546f9d148a,
+        type: 2}
+      propertyPath: friendly
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7706b31298a18a34d8394e546f9d148a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1418207307 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d,
@@ -1591,7 +1661,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1780,8 +1850,8 @@ MonoBehaviour:
   nextBeat: 0
   currentBeat: 0
   beatTime: 0.5
-  beatLeadLeeway: 0.3
-  beatLagLeeway: 0.4
+  beatLeadLeeway: 0.4
+  beatLagLeeway: 0.3
 --- !u!4 &1936525668
 Transform:
   m_ObjectHideFlags: 0

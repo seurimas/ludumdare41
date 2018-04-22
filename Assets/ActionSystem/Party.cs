@@ -19,19 +19,24 @@ public class Party : WorldItem
     public int? attackTarget;
     public int? harvestTarget;
     public List<Loot> loot = new List<Loot>();
-    public Dictionary<Notes, bool> partyStatus = new Dictionary<Notes, bool>();
+    public Dictionary<Notes, int> partyStatus = new Dictionary<Notes, int>();
 
     public Party()
     {
-        partyStatus.Add(Notes.Bard, true);
-        partyStatus.Add(Notes.Cleric, true);
-        partyStatus.Add(Notes.Rogue, true);
-        partyStatus.Add(Notes.Fighter, true);
+        partyStatus.Add(Notes.Bard, 10);
+        partyStatus.Add(Notes.Cleric, 10);
+        partyStatus.Add(Notes.Rogue, 10);
+        partyStatus.Add(Notes.Fighter, 10);
     }
 
     public override int GetFlags()
     {
         return 0;
+    }
+
+    public void Damage(Notes role, int amount)
+    {
+        partyStatus[role] -= amount;
     }
 
     public void Attack(WorldItem target)
@@ -59,13 +64,13 @@ public class Party : WorldItem
                 case PlantResource.HONEY:
                 case PlantResource.JUICE:
                 case PlantResource.SAFRON:
-                    return partyStatus[Notes.Rogue];
+                    return partyStatus[Notes.Rogue] > 0;
                 case PlantResource.RUBY:
                 case PlantResource.SAPPHIRE:
                 case PlantResource.GARNET:
-                    return partyStatus[Notes.Cleric];
+                    return partyStatus[Notes.Cleric] > 0;
                 case PlantResource.TREE:
-                    return partyStatus[Notes.Bard];
+                    return partyStatus[Notes.Bard] > 0;
             }
         }
         return false;

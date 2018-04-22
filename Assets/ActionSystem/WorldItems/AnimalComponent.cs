@@ -23,8 +23,9 @@ public class AnimalComponent : MonoBehaviour, IRhythmListener {
     private Sprite[] animationFrames;
     private SpriteRenderer spriteRenderer;
     private Animal animal;
+    public int health = 2;
 
-    public void OnBeatRight()
+    public void OnBeatRight(int beatNumber)
     {
         animationState = (animationState + 1) % animationFrames.Length;
     }
@@ -49,23 +50,29 @@ public class AnimalComponent : MonoBehaviour, IRhythmListener {
                 animationFrames = new Sprite[] { bunnyIdle0, bunnyIdle1 };
                 break;
         }
-        transform.position = new Vector3(animal.NumberLinePosition, 0);
+        transform.position = new Vector3(animal.PositionX, 0);
 	}
+
+    public void Damage(int amount)
+    {
+        health -= amount;
+    }
 
     void OnDestroy()
     {
         RhythmManager.instance.RemoveListener(this);
+        SpiralWorldManager.instance.RemoveObject(animal.GetId());
     }
 
     // Update is called once per frame
     void Update () {
         spriteRenderer.sprite = animationFrames[animationState];
-        if (transform.position.x != animal.NumberLinePosition)
+        if (transform.position.x != animal.PositionX)
         {
-            if (Mathf.Abs(transform.position.x - animal.NumberLinePosition) < Time.deltaTime)
+            if (Mathf.Abs(transform.position.x - animal.PositionX) < Time.deltaTime)
             {
-                transform.position = new Vector3(animal.NumberLinePosition, transform.position.y);
-            } else if (transform.position.x > animal.NumberLinePosition)
+                transform.position = new Vector3(animal.PositionX, transform.position.y);
+            } else if (transform.position.x > animal.PositionX)
             {
                 transform.Translate(-Time.deltaTime, 0, 0);
             } else
@@ -73,5 +80,9 @@ public class AnimalComponent : MonoBehaviour, IRhythmListener {
                 transform.Translate(Time.deltaTime, 0, 0);
             }
         }
-	}
+        if (health < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
 }

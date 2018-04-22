@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BeatRenderer : MonoBehaviour, IRhythmListener {
-    public float spaceBetween = 128;
+    public float spaceBetween = 512;
     public Sprite target;
     public GameObject beatPrefab;
     private int latestBeat = 0;
-    public void OnBeatRight()
+    public void OnBeatRight(int beatNumber)
     {
     }
 
@@ -56,7 +56,7 @@ public class BeatRenderer : MonoBehaviour, IRhythmListener {
 	// Update is called once per frame
 	void Update ()
     {
-        for (int i = RhythmManager.instance.currentBeat - 10;i < RhythmManager.instance.currentBeat + 8; i++)
+        for (int i = RhythmManager.instance.currentBeat - 4;i < RhythmManager.instance.currentBeat + 8; i++)
         {
             Beat beat = GetBeat(i);
             if (beat == null && i >= RhythmManager.instance.currentBeat)
@@ -72,7 +72,7 @@ public class BeatRenderer : MonoBehaviour, IRhythmListener {
         }
         foreach (Beat beat in GetComponentsInChildren<Beat>())
         {
-            if (beat.beatIndex < RhythmManager.instance.currentBeat - 10)
+            if (beat.beatIndex < RhythmManager.instance.currentBeat - 4)
             {
                 Destroy(beat.gameObject);
             }

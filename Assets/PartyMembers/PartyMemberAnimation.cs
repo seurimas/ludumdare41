@@ -7,32 +7,38 @@ public class PartyMemberAnimation : MonoBehaviour {
     public float speed;
     Coroutine active;
     Vector3 startPosition;
+    private PartyComponent party;
+    private int offset;
+    public float movementSpeed = 5;
 
     private void Start()
     {
-
+        party = GetComponentInParent<PartyComponent>();
+        offset = (int)transform.localPosition.x;
     }
 
-    public void MoveToX(int targetX)
+    void Update()
     {
-        Interrupt();
-        active = StartCoroutine(MoveCoroutine(targetX));
+        if (active == null)
+        {
+            transform.Translate(SpiralWorldManager.TranslationToTarget(transform.position.x - offset,
+                party.party.NumberLinePosition,
+                movementSpeed * Time.deltaTime
+            ));
+        }
     }
 
-    public void Forward()
-    {
-        MoveToX((int)transform.position.x + 1);
-    }
 
-    public void Backward()
-    {
-        MoveToX((int)transform.position.x - 1);
-    }
 
     public void Attack()
     {
         Interrupt();
         active = StartCoroutine(Jump(0.5f));
+    }
+    public void Hurt()
+    {
+        Interrupt();
+        active = StartCoroutine(Jump(0.3f));
     }
 
     public void Craft()
@@ -50,38 +56,23 @@ public class PartyMemberAnimation : MonoBehaviour {
         }
     }
 
-    private IEnumerator MoveCoroutine(int finalX)
-    {
-        while ((int)transform.position.x != finalX)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(finalX, transform.position.y, transform.position.z), Time.deltaTime * speed);
-            yield return 0;
-        }
-
-        active = null;
-    }
-
     private IEnumerator Pulse(float breakTime, float delay, float scaleFactor)
     {
         var baseScale = transform.localScale;
-        while (true)
+        float growingTime = Time.time;
+        while (growingTime + delay > Time.time)
         {
-            float growingTime = Time.time;
-            while (growingTime + delay > Time.time)
-            {
-                transform.localScale = Vector3.Lerp(baseScale * scaleFactor, baseScale, (growingTime + delay) - Time.time);
-                yield return 0;
-            }
-
-            float shrinkingTime = Time.time;
-            while (shrinkingTime + delay > Time.time)
-            {
-                transform.localScale = Vector3.Lerp(baseScale, baseScale * scaleFactor, (shrinkingTime + delay) - Time.time);
-                yield return 0;
-            }
-
-            yield return new WaitForSeconds(breakTime);
+            transform.localScale = Vector3.Lerp(baseScale * scaleFactor, baseScale, (growingTime + delay) - Time.time);
+            yield return 0;
         }
+
+        float shrinkingTime = Time.time;
+        while (shrinkingTime + delay > Time.time)
+        {
+            transform.localScale = Vector3.Lerp(baseScale, baseScale * scaleFactor, (shrinkingTime + delay) - Time.time);
+            yield return 0;
+        }
+        active = null;
     }
 
     private IEnumerator Jump(float waitTime)
@@ -89,23 +80,18 @@ public class PartyMemberAnimation : MonoBehaviour {
         startPosition = transform.position;
         int originalY = (int)transform.position.y;
         int maxJump = originalY + 2;
-
-        while (true)
+        while (transform.position.y != maxJump)
         {
-            while ((int)transform.position.y != maxJump)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, maxJump, transform.position.z), Time.deltaTime * speed);
-                yield return 0;
-            }
-
-            while ((int)transform.position.y != originalY)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, originalY, transform.position.z), Time.deltaTime * 2 * speed);
-                yield return 0;
-            }
-
-            yield return new WaitForSeconds(waitTime);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, maxJump, transform.position.z), Time.deltaTime * speed);
+            yield return 0;
         }
+
+        while (transform.position.y != originalY)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, originalY, transform.position.z), Time.deltaTime * 2 * speed);
+            yield return 0;
+        }
+        active = null;
     }
 
 }

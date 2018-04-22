@@ -14,7 +14,7 @@ public enum Notes
 public interface IRhythmListener
 {
     bool OnNote(Notes note, List<Notes> fullRhythm);
-    void OnBeatRight();
+    void OnBeatRight(int beatNumber);
     void OnFailure(List<Notes> failedRhythm, bool tooEarly);
 }
 
@@ -93,7 +93,7 @@ public class RhythmManager : MonoBehaviour {
     {
         foreach (IRhythmListener listener in listeners)
         {
-            listener.OnBeatRight();
+            listener.OnBeatRight(currentBeat);
         }
     }
 
@@ -102,7 +102,6 @@ public class RhythmManager : MonoBehaviour {
         EatBeat();
         bool wantClear = false;
         notes.Add(note);
-        Debug.Log(notes.Count);
         foreach (IRhythmListener listener in listeners)
         {
             wantClear |= listener.OnNote(note, notes);

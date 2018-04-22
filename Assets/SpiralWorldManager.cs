@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpiralWorldManager : MonoBehaviour {
+    public static Vector3 TranslationToTarget(float self, float numLine, float maxSpeed)
+    {
+        float distance = numLine * WorldItem.WorldScale - self;
+        return new Vector3(Mathf.Clamp(distance, -maxSpeed, maxSpeed), 0);
+    }
+    public static SpiralWorldManager instance;
     public readonly SpiralWorld world = new SpiralWorld();
     private readonly Dictionary<int, GameObject> worldObjects = new Dictionary<int, GameObject>();
     private PartyComponent party;
@@ -12,6 +18,7 @@ public class SpiralWorldManager : MonoBehaviour {
     public int renderEnd;
 	// Use this for initialization
 	void Start () {
+        instance = this;
         party = GetComponentInChildren<PartyComponent>();
         world.AddItem(party.party);
         world.AddItem(new Plant
@@ -24,7 +31,7 @@ public class SpiralWorldManager : MonoBehaviour {
         {
             harvested = false,
             resource = PlantResource.SAFRON,
-            NumberLinePosition = 1,
+            NumberLinePosition = 3,
         });
         world.AddItem(new Plant
         {
@@ -52,15 +59,15 @@ public class SpiralWorldManager : MonoBehaviour {
         });
         world.AddItem(new Animal
         {
-            NumberLinePosition = 3,
+            NumberLinePosition = 1,
             animalType = AnimalType.BOUNCING_BUNNY,
         });
     }
     
 	// Update is called once per frame
 	void Update () {
-        renderStart = party.party.NumberLinePosition - 16;
-        renderEnd = party.party.NumberLinePosition + 16;
+        renderStart = party.party.NumberLinePosition - 8;
+        renderEnd = party.party.NumberLinePosition + 8;
 		foreach (WorldItem item in world.GetItems())
         {
             if (item.NumberLinePosition >= renderStart && item.NumberLinePosition <= renderEnd)
@@ -79,6 +86,21 @@ public class SpiralWorldManager : MonoBehaviour {
             }
         }
 	}
+
+    public GameObject GetWorldGameObject(int itemId)
+    {
+        if (worldObjects.ContainsKey(itemId))
+        {
+            return worldObjects[itemId];
+        }
+        return null;
+    }
+
+    public void RemoveObject(int itemId)
+    {
+        worldObjects.Remove(itemId);
+        world.RemoveItem(itemId);
+    }
 
     GameObject InstantiateWorldItem(WorldItem worldItem)
     {

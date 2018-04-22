@@ -3,7 +3,15 @@ using System.Collections.Generic;
 
 public abstract class WorldItem
 {
+    public const int WorldScale = 4;
     public int NumberLinePosition;
+    public float PositionX
+    {
+        get
+        {
+            return NumberLinePosition * WorldScale;
+        }
+    }
     
     private int id;
     public void SetId(int id)

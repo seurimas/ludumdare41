@@ -46,7 +46,7 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
     {
     }
 
-    public void OnBeatRight()
+    public void OnBeatRight(int beatNumber)
     {
     }
 

@@ -16,9 +16,9 @@ public class RhythmAudio : MonoBehaviour, IRhythmListener
     {
     }
 
-    public void OnBeatRight()
+    public void OnBeatRight(int beatNumber)
     {
-        source.PlayOneShot(beat, 0.5f);
+        source.PlayOneShot(beat, beatNumber % 4 == 0 ? 1f : 0.6f);
     }
 
     public void OnFailure(List<Notes> failedRhythm, bool tooEarly)
