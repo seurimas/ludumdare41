@@ -8,6 +8,10 @@ public enum PlantResource
     HONEY,
     SAFRON,
     JUICE,
+    RUBY,
+    SAPPHIRE,
+    GARNET,
+    TREE,
 };
 
 public class Plant : WorldItem
@@ -27,9 +31,15 @@ public class PlantComponent : MonoBehaviour {
     public Sprite safronSprite;
     public Sprite juiceSprite;
     public Sprite emptySprite;
+    public Sprite treeSprite;
+    public Sprite emptyTreeSprite;
+    public Sprite rubySprite;
+    public Sprite sapphireSprite;
+    public Sprite garnetSprite;
+    public Sprite emptyForestSprite;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         spriteRenderer = GetComponent<SpriteRenderer>();
         plant = GetComponent<WorldItemComponent>().GetItem<Plant>();
 	}
@@ -39,7 +49,22 @@ public class PlantComponent : MonoBehaviour {
         transform.position = new Vector3(plant.NumberLinePosition, 0, 0);
 		if (plant.harvested)
         {
-            spriteRenderer.sprite = emptySprite;
+            switch (plant.resource)
+            {
+                case PlantResource.HONEY:
+                case PlantResource.JUICE:
+                case PlantResource.SAFRON:
+                    spriteRenderer.sprite = emptySprite;
+                    break;
+                case PlantResource.RUBY:
+                case PlantResource.SAPPHIRE:
+                case PlantResource.GARNET:
+                    spriteRenderer.sprite = emptyForestSprite;
+                    break;
+                case PlantResource.TREE:
+                    spriteRenderer.sprite = emptyTreeSprite;
+                    break;
+            }
         } else
         {
             switch (plant.resource)
@@ -52,6 +77,18 @@ public class PlantComponent : MonoBehaviour {
                     break;
                 case PlantResource.SAFRON:
                     spriteRenderer.sprite = safronSprite;
+                    break;
+                case PlantResource.RUBY:
+                    spriteRenderer.sprite = rubySprite;
+                    break;
+                case PlantResource.SAPPHIRE:
+                    spriteRenderer.sprite = sapphireSprite;
+                    break;
+                case PlantResource.GARNET:
+                    spriteRenderer.sprite = garnetSprite;
+                    break;
+                case PlantResource.TREE:
+                    spriteRenderer.sprite = treeSprite;
                     break;
             }
         }

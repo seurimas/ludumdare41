@@ -13,9 +13,16 @@ TextureImporter:
     21300016: JuicePlant
     21300018: ForestFloor
     21300020: ForestSky
-    21300022: ForestFoliage0
+    21300022: ForestPlant00
     21300024: BeachForestFloor
     21300026: BeachForestSky
+    21300028: ForestForeground01
+    21300030: ForestForeground02
+    21300032: ForestPlantRuby
+    21300034: ForestPlantGarnet
+    21300036: ForestPlantSapphire
+    21300038: ForestPlantEmpty
+    21300040: BeachEnvironment_0
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -327,7 +334,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ForestFoliage0
+      name: ForestPlant00
       rect:
         serializedVersion: 2
         x: 65
@@ -382,6 +389,146 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 33a1f9c14fa159d4f8d358a8f57c586f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestForeground01
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 32
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 412e1de4599cdab48bf54b92c7879b72
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestForeground02
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 32
+        width: 25
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c296dd01050cdc8468b840f312414ed8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPlantRuby
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 234
+        width: 26
+        height: 16
+      alignment: 9
+      pivot: {x: 0.5077089, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cca1c5f41b83c84cac3c97f71360fa4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPlantGarnet
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 220
+        width: 25
+        height: 14
+      alignment: 9
+      pivot: {x: 0.49198303, y: 1.285714}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39050fbb26f7981488e27968dfda9e2e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPlantSapphire
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 234
+        width: 27
+        height: 16
+      alignment: 9
+      pivot: {x: 0.49257687, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72ea9f6d7c072bd459d449233f865db3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ForestPlantEmpty
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 195
+        width: 27
+        height: 16
+      alignment: 9
+      pivot: {x: 0.51484627, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb5e6e39ed93da348b320bf0c7b174ef
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BeachEnvironment_0
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 241
+        width: 32
+        height: 15
+      alignment: 9
+      pivot: {x: 0.5, y: 1.07}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8fbebb6fa07e1c4da2aa5c469c666f0
       vertices: []
       indices: 
       edges: []
