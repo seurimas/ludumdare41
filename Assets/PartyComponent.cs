@@ -10,7 +10,7 @@ public class PartyComponent : MonoBehaviour {
 	void Start () {
         WorldPartyActions.Move += OnPartyMove;
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 	}

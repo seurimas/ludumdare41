@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -134,5 +135,10 @@ public class RhythmManager : MonoBehaviour {
     public void AddListener(IRhythmListener listener)
     {
         listeners.Add(listener);
+    }
+
+    public void RemoveListener(IRhythmListener listener)
+    {
+        listeners.Remove(listener);
     }
 }

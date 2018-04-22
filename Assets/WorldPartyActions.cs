@@ -12,7 +12,7 @@ public class WorldPartyActions : MonoBehaviour {
     void Start ()
     {
         party = GetComponentInChildren<PartyComponent>();
-        world = GetComponentInChildren<SpiralWorldManager>();
+        world = GetComponent<SpiralWorldManager>();
         world.world.AddItem(party.party);
 	}
 	
@@ -35,21 +35,21 @@ public class WorldPartyActions : MonoBehaviour {
     }
 
     public void AdvanceParty() {
-        int currentPosition = party.party.GetPosition();
+        int currentPosition = party.party.NumberLinePosition;
         if (CanPartyEnter(currentPosition + 1))
             party.party.NumberLinePosition++;
         TriggerPartyMove();
     }
     public void RetreatParty()
     {
-        int currentPosition = party.party.GetPosition();
+        int currentPosition = party.party.NumberLinePosition;
         if (CanPartyEnter(currentPosition - 1))
             party.party.NumberLinePosition--;
         TriggerPartyMove();
     }
     public void PartyAttack()
     {
-        int currentPosition = party.party.GetPosition();
+        int currentPosition = party.party.NumberLinePosition;
         foreach (WorldItem item in world.world.GetItemsAt(currentPosition - 1, currentPosition + 1))
         {
             if (item.IsAttackable())
@@ -62,11 +62,12 @@ public class WorldPartyActions : MonoBehaviour {
     }
     public void PartyHarvest()
     {
-        int currentPosition = party.party.GetPosition();
+        int currentPosition = party.party.NumberLinePosition;
         foreach (WorldItem item in world.world.GetItemsAt(currentPosition - 1, currentPosition + 1))
         {
             if (item.IsHarvestable())
             {
+                Debug.Log(item);
                 party.party.Harvest(item);
             }
         }
