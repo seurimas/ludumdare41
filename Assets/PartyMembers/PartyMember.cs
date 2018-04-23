@@ -70,6 +70,10 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
 
     public bool OnNote(Notes note, List<Notes> fullRhythm)
     {
+        if(note == role)
+        {
+            Debug.Log(note + " note was hitted");
+        }
         return false;
     }
 
