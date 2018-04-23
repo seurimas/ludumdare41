@@ -6,6 +6,8 @@ using UnityEngine;
 public class PartyMember : MonoBehaviour, IRhythmListener {
     public Notes role;
     public Sprite[] idleFrames;
+    public Sprite restSprite;
+    public Sprite deadSprite;
     private int frameState = 0;
     private new PartyMemberAnimation animation;
     private PartyComponent party;
@@ -19,6 +21,14 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
         party = GetComponentInParent<PartyComponent>();
         RhythmManager.instance.AddListener(this);
         GetComponent<SpriteRenderer>().sprite = idleFrames[0];
+    }
+
+    void Update()
+    {
+        if (IsDead())
+        {
+            GetComponent<SpriteRenderer>().sprite = deadSprite;
+        }
     }
 
     void OnDestroy()
@@ -78,7 +88,8 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
             }
         }
         frameState = (frameState + 1) % idleFrames.Length;
-        GetComponent<SpriteRenderer>().sprite = idleFrames[frameState];
+        if (!IsDead())
+            GetComponent<SpriteRenderer>().sprite = idleFrames[frameState];
     }
 
 

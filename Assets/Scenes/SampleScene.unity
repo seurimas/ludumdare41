@@ -661,6 +661,18 @@ Prefab:
       value: 
       objectReference: {fileID: 21300038, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
         type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: restSprite
+      value: 
+      objectReference: {fileID: 21300052, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: deadSprite
+      value: 
+      objectReference: {fileID: 21300054, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
   m_IsPrefabParent: 0
@@ -728,6 +740,18 @@ Prefab:
       propertyPath: idleFrames.Array.data[1]
       value: 
       objectReference: {fileID: 21300034, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: restSprite
+      value: 
+      objectReference: {fileID: 21300048, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: deadSprite
+      value: 
+      objectReference: {fileID: 21300050, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
@@ -1271,6 +1295,18 @@ Prefab:
       value: 
       objectReference: {fileID: 21300026, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
         type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: restSprite
+      value: 
+      objectReference: {fileID: 21300040, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: deadSprite
+      value: 
+      objectReference: {fileID: 21300042, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
   m_IsPrefabParent: 0
@@ -1780,6 +1816,18 @@ Prefab:
       propertyPath: idleFrames.Array.data[1]
       value: 
       objectReference: {fileID: 21300030, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: restSprite
+      value: 
+      objectReference: {fileID: 21300044, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
+        type: 3}
+    - target: {fileID: 114041980773789190, guid: a8c97c2291de26c418f7b184d0ee242d,
+        type: 2}
+      propertyPath: deadSprite
+      value: 
+      objectReference: {fileID: 21300046, guid: 8489f8848ccd9f942a346dc1eae9d8c3,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a8c97c2291de26c418f7b184d0ee242d, type: 2}
