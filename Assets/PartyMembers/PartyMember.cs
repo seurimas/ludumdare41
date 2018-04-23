@@ -73,8 +73,9 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
     {
         if(note == role)
         {
+            Debug.Log("Pm says note correct");
             if (NoteProcessed != null)
-                NoteProcessed.Invoke(this, new PartyMemberEventArgs(transform));
+                NoteProcessed.Invoke(this, new PartyMemberEventArgs(transform,role));
         }
         return false;
     }
@@ -127,9 +128,11 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
 public class PartyMemberEventArgs : EventArgs
 {
     public Transform transform;
+    public Notes role;
 
-    public PartyMemberEventArgs(Transform transform)
+    public PartyMemberEventArgs(Transform transform, Notes role)
     {
         this.transform = transform;
+        this.role = role;
     }
 }
