@@ -17,6 +17,7 @@ public class Monster : WorldItem
 }
 
 public class MonsterComponent : MonoBehaviour, IRhythmListener {
+    public static int killCount = 0;
     public Sprite laserWolfIdle0;
     public Sprite laserWolfIdle1;
     public Sprite laserWolfAttack;
@@ -79,6 +80,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     {
         RhythmManager.instance.RemoveListener(this);
         SpiralWorldManager.instance.RemoveObject(monster.GetId());
+        killCount += 1;
     }
 
     void AI()
