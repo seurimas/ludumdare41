@@ -43,14 +43,7 @@ public class RhythmManager : MonoBehaviour {
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        } else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(gameObject);
+        instance = this;
     }
     // Use this for initialization
     void Start ()

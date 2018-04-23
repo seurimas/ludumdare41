@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
@@ -14,6 +15,19 @@ public class PartyComponent : MonoBehaviour {
         WorldPartyActions.Forward += OnPartyForward;
         WorldPartyActions.Backward += OnPartyBackward;
         GetChildren();
+    }
+
+    void Update()
+    {
+        bool alive = false;
+        foreach (PartyMemberStatus status in party.partyStatus.Values)
+        {
+            alive |= status.health > 0;
+        }
+        if (!alive)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     void GetChildren()

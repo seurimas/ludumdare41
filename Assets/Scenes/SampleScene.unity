@@ -1305,6 +1305,7 @@ RectTransform:
   - {fileID: 990831850}
   - {fileID: 1448639451}
   - {fileID: 1528777517}
+  - {fileID: 1414593216}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1454,6 +1455,7 @@ GameObject:
   - component: {fileID: 1150944598}
   - component: {fileID: 1150944600}
   - component: {fileID: 1150944601}
+  - component: {fileID: 1150944602}
   m_Layer: 0
   m_Name: WorldManager
   m_TagString: Untagged
@@ -1534,6 +1536,18 @@ MonoBehaviour:
     type: 3}
   beachForestSkySprite: {fileID: 21300026, guid: e17e0b98eb8f8824283ae99e62376f4d,
     type: 3}
+--- !u!114 &1150944602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1150944597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd3bd4f841cfb844a036624d89c4ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTime: 5
 --- !u!1001 &1219026355
 Prefab:
   m_ObjectHideFlags: 0
@@ -1784,6 +1798,68 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1831691209}
   m_Script: {fileID: 11500000, guid: 5ea6c63b8533d7244bce9824ac8305f5, type: 3}
+--- !u!1 &1414593215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1414593216}
+  - component: {fileID: 1414593218}
+  - component: {fileID: 1414593217}
+  m_Layer: 0
+  m_Name: PlayerInventoryRenderer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1414593216
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1414593215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1093585636}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 208, y: 208}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1414593217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1414593215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ae9688af8af354c8abe6890de12329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  party: {fileID: 21880309}
+  lootIcon: {fileID: 1170172295444794, guid: 72a9560937fdc8e4e90fffc9c395fa5d, type: 2}
+  garnetSprite: {fileID: 21300052, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  sapphireSprite: {fileID: 21300050, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  rubySprite: {fileID: 21300048, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  juiceSprite: {fileID: 21300042, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  safronSprite: {fileID: 21300046, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  honeySprite: {fileID: 21300044, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  woodSprite: {fileID: 21300054, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  goldSprite: {fileID: 0}
+--- !u!222 &1414593218
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1414593215}
 --- !u!4 &1418207307 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4022155224193910, guid: a8c97c2291de26c418f7b184d0ee242d,
