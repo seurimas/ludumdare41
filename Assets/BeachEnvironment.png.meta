@@ -23,6 +23,13 @@ TextureImporter:
     21300036: ForestPlantSapphire
     21300038: ForestPlantEmpty
     21300040: BeachEnvironment_0
+    21300042: Juice
+    21300044: Honey
+    21300046: Safron
+    21300048: Ruby
+    21300050: Sapphire
+    21300052: Garnet
+    21300054: Wood
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -529,6 +536,146 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f8fbebb6fa07e1c4da2aa5c469c666f0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Juice
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 234
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 444fa2c31dfa49e468b4261ac42c25ad
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Honey
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 216
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33831f915dcc2934fbd54bf404ece767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Safron
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 216
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 729a285f2eb005147bd8770bb8e4ef09
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Ruby
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 198
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ef38b16dfffa8546bc9ed25d57a4f56
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sapphire
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 198
+        width: 5
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e09d961c0157199479724937ae276529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Garnet
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 197
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd4cc9d1a739214da377c63841b6f63
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wood
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 239
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a93561ff8c0f641b505d411f27eeb0
       vertices: []
       indices: 
       edges: []
