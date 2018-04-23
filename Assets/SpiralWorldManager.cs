@@ -17,60 +17,15 @@ public class SpiralWorldManager : MonoBehaviour {
     public GameObject monsterPrefab;
     public int renderStart;
     public int renderEnd;
-	// Use this for initialization
-	void Start () {
+    void Awake()
+    {
         instance = this;
+    }
+    // Use this for initialization
+    void Start () {
         party = GetComponentInChildren<PartyComponent>();
         world.AddItem(party.party);
         worldObjects.Add(party.party.GetId(), party.gameObject);
-        Debug.Log(worldObjects[0]);
-        Debug.Log(string.Format("Initializing ({0})", party.party.GetId()));
-        world.AddItem(new Plant
-        {
-            harvested = false,
-            resource = PlantResource.HONEY,
-            NumberLinePosition = 0,
-        });
-        world.AddItem(new Plant
-        {
-            harvested = false,
-            resource = PlantResource.SAFRON,
-            NumberLinePosition = 6,
-        });
-        world.AddItem(new Plant
-        {
-            harvested = false,
-            resource = PlantResource.JUICE,
-            NumberLinePosition = 12,
-        });
-        world.AddItem(new Plant
-        {
-            harvested = false,
-            resource = PlantResource.RUBY,
-            NumberLinePosition = 16,
-        });
-        world.AddItem(new Plant
-        {
-            harvested = false,
-            resource = PlantResource.SAPPHIRE,
-            NumberLinePosition = 20,
-        });
-        world.AddItem(new Plant
-        {
-            harvested = false,
-            resource = PlantResource.GARNET,
-            NumberLinePosition = 24,
-        });
-        world.AddItem(new Animal
-        {
-            NumberLinePosition = 8,
-            animalType = AnimalType.JUMPING_WORM,
-        });
-        world.AddItem(new Monster
-        {
-            monsterType = MonsterType.LASER_WOLF,
-            NumberLinePosition = 7,
-        });
     }
     
 	// Update is called once per frame

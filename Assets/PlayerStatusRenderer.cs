@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -33,7 +34,10 @@ public class PlayerStatusRenderer : MonoBehaviour {
         indicators.Add(Notes.Fighter, Instantiate(indicatorPrefab, transform));
         indicators[Notes.Fighter].GetComponent<RectTransform>().anchoredPosition = new Vector3(112, 0);
         indicators[Notes.Fighter].transform.Find("Symbol").GetComponent<Image>().sprite = fighterSymbol;
+
     }
+
+
 	
 	// Update is called once per frame
 	void Update () {
