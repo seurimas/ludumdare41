@@ -40,7 +40,7 @@ public class PartyMemberNoteRenderer : MonoBehaviour {
     {
         Image image;
         Debug.Log("Hello");
-        Debug.Log(camera.WorldToScreenPoint(e.transform.position));
+        Debug.Log(e.role);
 
         MakeTransparent(noteRenderers);
 
@@ -58,12 +58,12 @@ public class PartyMemberNoteRenderer : MonoBehaviour {
                 image.color = new Color(255, 255, 255, 1);
                 image.sprite = symbols[1];
                 break;
-            case Notes.Fighter:
+            case Notes.Rogue:
                 image = noteRenderers[2].GetComponent<Image>();
                 image.color = new Color(255, 255, 255, 1);
                 image.sprite = symbols[2];
                 break;
-            case Notes.Rogue:
+            case Notes.Fighter:
                 image = noteRenderers[3].GetComponent<Image>();
                 image.color = new Color(255, 255, 255, 1);
                 image.sprite = symbols[3];

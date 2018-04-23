@@ -1258,7 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cc57bf6d5f270d4cb90f17218eca72a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 519420031}
   party: {fileID: 21880309}
   bardSymbol: {fileID: 21300034, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   clericSymbol: {fileID: 21300036, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
@@ -1826,7 +1825,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1093585636}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1942,7 +1941,7 @@ RectTransform:
   m_GameObject: {fileID: 1528777516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 628658123}
   - {fileID: 536550565}
@@ -1951,11 +1950,11 @@ RectTransform:
   m_Father: {fileID: 1093585636}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -200, y: -100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 128, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1528777518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1972,8 +1971,8 @@ MonoBehaviour:
   symbols:
   - {fileID: 21300034, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   - {fileID: 21300036, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
-  - {fileID: 21300032, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   - {fileID: 21300038, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
+  - {fileID: 21300032, guid: 37991300a1f2d1640b318b3f376a39d2, type: 3}
   noteRenderers:
   - {fileID: 628658122}
   - {fileID: 536550564}
