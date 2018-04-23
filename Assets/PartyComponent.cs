@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
-    List<PartyMember> PartyMembers = new List<PartyMember>();
+    public List<PartyMember> PartyMembers = new List<PartyMember>();
     public SpiralWorldManager spiralWorldManager;
     public GameObject weaponPrefab;
     // Use this for initialization
