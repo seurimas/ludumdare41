@@ -169,11 +169,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 186
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -596,11 +596,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 186
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -670,7 +670,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -683,10 +683,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Patapata is a rhythm survival game. You control a party of four that consists
     of: A Bard, A Cleric, A Fighter and a Rogue.\r\n\r\nEach member of the party responds
-    to a specific key from the keyboard. When you press the corresponding key, one
-    of the party members will emit a note.\r\n\r\nTo perform actions you must get
-    the correct combination of four notes. The notes count as valid only if you generate
-    them following the beat."
+    to a specific key from the keyboard. Use the keys Q, W, E and R. When you press
+    the corresponding key, one of the party members will emit a note.\r\n\r\nTo perform
+    actions you must get the correct combination of four notes. The notes count as
+    valid only if you generate them following the beat."
 --- !u!222 &540702535
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1068,11 +1068,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 186
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -1624,11 +1624,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
-    m_MaxSize: 40
+    m_MaxSize: 186
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
