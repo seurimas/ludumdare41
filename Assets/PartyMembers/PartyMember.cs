@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PartyMember : MonoBehaviour, IRhythmListener {
     public Notes role;
+    public Sprite[] idleFrames;
+    private int frameState = 0;
     private new PartyMemberAnimation animation;
     private PartyComponent party;
     int offset;
@@ -16,6 +18,7 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
         animation = GetComponent<PartyMemberAnimation>();
         party = GetComponentInParent<PartyComponent>();
         RhythmManager.instance.AddListener(this);
+        GetComponent<SpriteRenderer>().sprite = idleFrames[0];
     }
 
     void OnDestroy()
@@ -62,15 +65,20 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
 
     public void OnBeatRight(int beatNumber)
     {
-        if (party.party.attackTarget.HasValue)
+        if (MyTurn(beatNumber))
         {
-            if (MyTurn(beatNumber))
+            if (party.party.attackTarget.HasValue)
             {
                 GameObject target = party.spiralWorldManager.GetWorldGameObject(party.party.attackTarget.Value);
                 if (target != null)
+                {
                     Attack(target);
+                    return;
+                }
             }
         }
+        frameState = (frameState + 1) % idleFrames.Length;
+        GetComponent<SpriteRenderer>().sprite = idleFrames[frameState];
     }
 
 
