@@ -13,6 +13,7 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
     private PartyComponent party;
     int offset;
     public GameObject attackObject;
+    public event EventHandler<PartyMemberEventArgs> NoteProcessed;
 
 	// Use this for initialization
 	void Start () {
@@ -72,7 +73,8 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
     {
         if(note == role)
         {
-            Debug.Log(note + " note was hitted");
+            if (NoteProcessed != null)
+                NoteProcessed.Invoke(this, new PartyMemberEventArgs(transform));
         }
         return false;
     }
@@ -119,5 +121,15 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
                 return beatNumber % 4 == 3;
         }
         return false;
+    }
+}
+
+public class PartyMemberEventArgs : EventArgs
+{
+    public Transform transform;
+
+    public PartyMemberEventArgs(Transform transform)
+    {
+        this.transform = transform;
     }
 }

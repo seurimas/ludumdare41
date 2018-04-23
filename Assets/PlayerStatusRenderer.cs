@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerStatusRenderer : MonoBehaviour {
+    public Camera camera;
     public PartyComponent party;
     public Sprite bardSymbol;
     public Sprite clericSymbol;
@@ -33,6 +35,16 @@ public class PlayerStatusRenderer : MonoBehaviour {
         indicators.Add(Notes.Fighter, Instantiate(indicatorPrefab, transform));
         indicators[Notes.Fighter].GetComponent<RectTransform>().anchoredPosition = new Vector3(112, 0);
         indicators[Notes.Fighter].transform.Find("Symbol").GetComponent<Image>().sprite = fighterSymbol;
+
+        Initialize();
+    }
+
+    void Initialize()
+    {
+        foreach(PartyMember pm in party.PartyMembers)
+        {
+            pm.NoteProcessed += OnPartyMemberNoteProcessed;
+        }
     }
 	
 	// Update is called once per frame
@@ -61,5 +73,10 @@ public class PlayerStatusRenderer : MonoBehaviour {
         {
             return none;
         }
+    }
+
+    void OnPartyMemberNoteProcessed(object sender, PartyMemberEventArgs e)
+    {
+        Debug.Log(camera.WorldToScreenPoint(e.transform.position));
     }
 }
