@@ -35,41 +35,41 @@ public class SpiralWorldManager : MonoBehaviour {
         {
             harvested = false,
             resource = PlantResource.SAFRON,
-            NumberLinePosition = 3,
+            NumberLinePosition = 6,
         });
         world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.JUICE,
-            NumberLinePosition = 2,
+            NumberLinePosition = 12,
         });
         world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.RUBY,
-            NumberLinePosition = 4,
+            NumberLinePosition = 16,
         });
         world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.SAPPHIRE,
-            NumberLinePosition = 5,
+            NumberLinePosition = 20,
         });
         world.AddItem(new Plant
         {
             harvested = false,
             resource = PlantResource.GARNET,
-            NumberLinePosition = 6,
+            NumberLinePosition = 24,
         });
         world.AddItem(new Animal
         {
-            NumberLinePosition = 3,
+            NumberLinePosition = 8,
             animalType = AnimalType.JUMPING_WORM,
         });
         world.AddItem(new Monster
         {
             monsterType = MonsterType.LASER_WOLF,
-            NumberLinePosition = 3,
+            NumberLinePosition = 7,
         });
     }
     

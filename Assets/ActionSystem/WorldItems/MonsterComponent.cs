@@ -31,6 +31,8 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     private SpriteRenderer spriteRenderer;
     private Monster monster;
     public int health = 6;
+    public int attackRange = 1;
+    public int aggroRange = 3;
 
     public void OnBeatRight(int beatNumber)
     {
@@ -83,7 +85,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     {
         if (Mathf.Abs(transform.position.x - monster.PositionX) < 0.33f)
         {
-            foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - 1, monster.NumberLinePosition + 1))
+            foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - attackRange, monster.NumberLinePosition + attackRange))
             {
                 if (item is Party)
                 {
@@ -103,7 +105,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
                     return;
                 }
             }
-            foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - 3, monster.NumberLinePosition + 3))
+            foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - aggroRange, monster.NumberLinePosition + aggroRange))
             {
                 if (item is Party)
                 {
