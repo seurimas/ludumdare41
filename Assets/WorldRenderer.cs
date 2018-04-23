@@ -15,6 +15,8 @@ public class WorldRenderer : MonoBehaviour {
     public Sprite[] forestForegroundSprites;
     public Sprite beachForestFloorSprite;
     public Sprite beachForestSkySprite;
+    public const int beachSize = 128;
+    public const int forestSize = 256;
     // Use this for initialization
     void Start () {
         floorTilemap = transform.Find("FloorGrid").GetChild(0).GetComponent<Tilemap>();
@@ -25,7 +27,7 @@ public class WorldRenderer : MonoBehaviour {
 
     void generateBeach()
     {
-        for (int i = 0; i < 64; i++)
+        for (int i = 0; i < beachSize / 2; i++)
         {
             Tile floorTile = ScriptableObject.CreateInstance<Tile>();
             floorTile.sprite = beachFloorSprite;
@@ -34,7 +36,7 @@ public class WorldRenderer : MonoBehaviour {
             skyTile.sprite = beachSkySprite;
             backgroundTilemap.SetTile(new Vector3Int(i, 0, 0), skyTile);
         }
-        for (int i = 64; i < 128; i++)
+        for (int i = 64; i < forestSize / 2; i++)
         {
             Tile floorTile = ScriptableObject.CreateInstance<Tile>();
             floorTile.sprite = forestFloorSprite;
@@ -45,11 +47,11 @@ public class WorldRenderer : MonoBehaviour {
         }
         Tile transitionFloorTile = ScriptableObject.CreateInstance<Tile>();
         transitionFloorTile.sprite = beachForestFloorSprite;
-        floorTilemap.SetTile(new Vector3Int(64, 0, 0), transitionFloorTile);
+        floorTilemap.SetTile(new Vector3Int(beachSize / 2, 0, 0), transitionFloorTile);
         Tile transitionSkyTile = ScriptableObject.CreateInstance<Tile>();
         transitionSkyTile.sprite = beachForestSkySprite;
-        backgroundTilemap.SetTile(new Vector3Int(64, 0, 0), transitionSkyTile);
-        for (int i = 0; i < 128; i++)
+        backgroundTilemap.SetTile(new Vector3Int(beachSize / 2, 0, 0), transitionSkyTile);
+        for (int i = 0; i < beachSize; i++)
         {
             if (Random.value < 0.3f)
             {
@@ -58,7 +60,7 @@ public class WorldRenderer : MonoBehaviour {
                 foregroundTilemap.SetTile(new Vector3Int(i, 0, 0), foregroundTile);
             }
         }
-        for (int i = 128; i < 256; i++)
+        for (int i = 128; i < forestSize; i++)
         {
             if (Random.value < 0.3f)
             {
