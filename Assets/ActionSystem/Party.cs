@@ -35,6 +35,7 @@ public class Party : WorldItem
     public int? harvestTarget;
     public List<Loot> loot = new List<Loot>();
     public Dictionary<Notes, PartyMemberStatus> partyStatus = new Dictionary<Notes, PartyMemberStatus>();
+    public bool retreating = false;
 
     public Party()
     {

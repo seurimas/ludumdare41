@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PartyComponent : MonoBehaviour {
     public Party party = new Party();
     public List<PartyMember> PartyMembers = new List<PartyMember>();
+    private Dictionary<Notes, GameObject> members = new Dictionary<Notes, GameObject>();
     public SpiralWorldManager spiralWorldManager;
     public GameObject weaponPrefab;
     // Use this for initialization
@@ -27,6 +28,27 @@ public class PartyComponent : MonoBehaviour {
         if (!alive)
         {
             SceneManager.LoadScene("GameOver");
+        }
+        if (party.retreating)
+        {
+            members[Notes.Fighter].GetComponent<PartyMemberAnimation>().offset = 0;
+            members[Notes.Rogue].GetComponent<PartyMemberAnimation>().offset = 1;
+            members[Notes.Cleric].GetComponent<PartyMemberAnimation>().offset = 2;
+            members[Notes.Bard].GetComponent<PartyMemberAnimation>().offset = 3;
+            members[Notes.Fighter].transform.localScale = new Vector3(-1, 1, 1);
+            members[Notes.Rogue].transform.localScale = new Vector3(-1, 1, 1);
+            members[Notes.Cleric].transform.localScale = new Vector3(-1, 1, 1);
+            members[Notes.Bard].transform.localScale = new Vector3(-1, 1, 1);
+        } else
+        {
+            members[Notes.Fighter].GetComponent<PartyMemberAnimation>().offset = 3;
+            members[Notes.Rogue].GetComponent<PartyMemberAnimation>().offset = 2;
+            members[Notes.Cleric].GetComponent<PartyMemberAnimation>().offset = 1;
+            members[Notes.Bard].GetComponent<PartyMemberAnimation>().offset = 0;
+            members[Notes.Fighter].transform.localScale = new Vector3(1, 1, 1);
+            members[Notes.Rogue].transform.localScale = new Vector3(1, 1, 1);
+            members[Notes.Cleric].transform.localScale = new Vector3(1, 1, 1);
+            members[Notes.Bard].transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
@@ -52,6 +74,7 @@ public class PartyComponent : MonoBehaviour {
             {
                 member.role = Notes.Rogue;
             }
+            members.Add(member.role, member.gameObject);
         }
     }
 
