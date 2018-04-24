@@ -34,6 +34,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     public int health = 6;
     public int attackRange = 1;
     public int aggroRange = 3;
+    public float speed = 6;
 
     public void OnBeatRight(int beatNumber)
     {
@@ -128,15 +129,15 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
         spriteRenderer.sprite = animationFrames[animationState];
         if (transform.position.x != monster.PositionX)
         {
-            if (Mathf.Abs(transform.position.x - monster.PositionX) < Time.deltaTime)
+            if (Mathf.Abs(transform.position.x - monster.PositionX) < Time.deltaTime * speed)
             {
                 transform.position = new Vector3(monster.PositionX, transform.position.y);
             } else if (transform.position.x > monster.PositionX)
             {
-                transform.Translate(-Time.deltaTime, 0, 0);
+                transform.Translate(-Time.deltaTime * speed, 0, 0);
             } else
             {
-                transform.Translate(Time.deltaTime, 0, 0);
+                transform.Translate(Time.deltaTime * speed, 0, 0);
             }
         }
         if (health < 0)

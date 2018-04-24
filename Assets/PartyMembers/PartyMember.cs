@@ -15,8 +15,15 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
     public GameObject attackObject;
     public event EventHandler<PartyMemberEventArgs> NoteProcessed;
 
-	// Use this for initialization
-	void Start () {
+    public Sprite rubyWeaponSprite;
+    public Sprite sapphireWeaponSprite;
+    public Sprite garnetWeaponSprite;
+    public Sprite honeyWeaponSprite;
+    public Sprite safronWeaponSprite;
+    public Sprite juiceWeaponSprite;
+
+    // Use this for initialization
+    void Start () {
         offset = (int)transform.localPosition.x;
         animation = GetComponent<PartyMemberAnimation>();
         party = GetComponentInParent<PartyComponent>();
@@ -62,7 +69,52 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
         animation.Attack();
         float distance = target.transform.position.x - transform.position.x;
         GameObject newItem = Instantiate(attackObject, party.transform.parent);
-        newItem.GetComponent<ProjectileComponent>().friendly = true;
+        ProjectileComponent projectile = newItem.GetComponent<ProjectileComponent>();
+        projectile.friendly = true;
+        SpriteRenderer spriteRenderer = newItem.GetComponent<SpriteRenderer>();
+        Sprite sprite = spriteRenderer.sprite;
+        int damage = 1;
+        switch (role)
+        {
+            case Notes.Bard:
+                if (party.party.loot.Contains(Loot.RUBY_WEAPON))
+                {
+                    sprite = rubyWeaponSprite;
+                    damage = 3;
+                }
+                break;
+            case Notes.Cleric:
+                if (party.party.loot.Contains(Loot.SAPPHIRE_WEAPON))
+                {
+                    sprite = sapphireWeaponSprite;
+                    damage = 3;
+                } else if (party.party.loot.Contains(Loot.HONEY_WEAPON))
+                {
+                    sprite = honeyWeaponSprite;
+                    damage = 2;
+                }
+                break;
+            case Notes.Rogue:
+                if (party.party.loot.Contains(Loot.GARNET_WEAPON))
+                {
+                    sprite = rubyWeaponSprite;
+                    damage = 3;
+                } else if (party.party.loot.Contains(Loot.JUICE_WEAPON))
+                {
+                    sprite = juiceWeaponSprite;
+                    damage = 2;
+                }
+                break;
+            case Notes.Fighter:
+                if (party.party.loot.Contains(Loot.SAFRON_WEAPON))
+                {
+                    sprite = safronWeaponSprite;
+                    damage = 2;
+                }
+                break;
+        }
+        spriteRenderer.sprite = sprite;
+        projectile.damage = damage;
         newItem.transform.position = transform.position;
         Rigidbody2D rigidBody2D = newItem.GetComponent<Rigidbody2D>();
         rigidBody2D.velocity = new Vector3(distance, 5);
@@ -93,10 +145,46 @@ public class PartyMember : MonoBehaviour, IRhythmListener {
                     return;
                 }
             }
+            PartyMemberStatus status = party.party.GetStatus(role);
+            if (status.resting && (status.health < status.maxHealth || status.hunger < status.maxHunger / 2))
+            {
+                foreach (Loot loot in party.party.loot)
+                {
+                    bool ate = false;
+                    switch (loot)
+                    {
+                        case Loot.HONEY:
+                        case Loot.JUICE:
+                        case Loot.SAFRON:
+                            status.health = Math.Min(status.health + 5, status.maxHealth);
+                            status.hunger = status.maxHunger;
+                            party.party.loot.Remove(loot);
+                            ate = true;
+                            break;
+                    }
+                    if (ate)
+                    {
+                        break;
+                    }
+                }
+            }
+            if (status.resting && status.health >= status.maxHealth)
+            {
+                status.resting = false;
+            }
         }
         frameState = (frameState + 1) % idleFrames.Length;
         if (!IsDead())
-            GetComponent<SpriteRenderer>().sprite = idleFrames[frameState];
+        {
+            if (party.party.GetStatus(role).resting)
+            {
+                GetComponent<SpriteRenderer>().sprite = restSprite;
+            }
+            else
+            {
+                GetComponent<SpriteRenderer>().sprite = idleFrames[frameState];
+            }
+        }
     }
 
 

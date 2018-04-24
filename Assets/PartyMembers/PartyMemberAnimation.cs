@@ -8,7 +8,7 @@ public class PartyMemberAnimation : MonoBehaviour {
     Coroutine active;
     Vector3 startPosition;
     private PartyComponent party;
-    private int offset;
+    public int offset;
     public float movementSpeed = 5;
 
     private void Start()

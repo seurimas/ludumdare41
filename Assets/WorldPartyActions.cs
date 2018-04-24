@@ -23,6 +23,8 @@ public class WorldPartyActions : MonoBehaviour {
 
     private bool CanPartyEnter(int position)
     {
+        if (position < 0 || position >= WorldRenderer.forestSize / WorldItem.WorldScale)
+            return false;
         List<WorldItem> items = world.world.GetItemsAt(position);
         foreach (WorldItem item in items)
         {
@@ -37,14 +39,20 @@ public class WorldPartyActions : MonoBehaviour {
     public void AdvanceParty() {
         int currentPosition = party.party.NumberLinePosition;
         if (CanPartyEnter(currentPosition + 1))
+        {
             party.party.NumberLinePosition++;
+        }
+        party.party.retreating = false;
         TriggerForward();
     }
     public void RetreatParty()
     {
         int currentPosition = party.party.NumberLinePosition;
         if (CanPartyEnter(currentPosition - 1))
+        {
             party.party.NumberLinePosition--;
+        }
+        party.party.retreating = true;
         TriggerBackward();
     }
     public void PartyAttack()
@@ -72,6 +80,14 @@ public class WorldPartyActions : MonoBehaviour {
                 return;
             }
         }
+    }
+    public void PartyRest()
+    {
+        party.party.Rest();
+    }
+    public void PartyCraft()
+    {
+        party.party.Craft();
     }
 
     void TriggerPartyAttack()

@@ -621,6 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   party: {fileID: 21880309}
   position0: {x: 8, y: 3.5, z: 0}
+  position1: {x: -5, y: 3.5, z: 0}
   movementSpeed: 4
 --- !u!20 &519420031
 Camera:
@@ -1851,6 +1852,12 @@ MonoBehaviour:
   juiceSprite: {fileID: 21300042, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   safronSprite: {fileID: 21300046, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   honeySprite: {fileID: 21300044, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
+  garnetWeaponSprite: {fileID: 0}
+  sapphireWeaponSprite: {fileID: 0}
+  rubyWeaponSprite: {fileID: 0}
+  juiceWeaponSprite: {fileID: 0}
+  safronWeaponSprite: {fileID: 0}
+  honeyWeaponSprite: {fileID: 0}
   woodSprite: {fileID: 21300054, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   goldSprite: {fileID: 0}
 --- !u!222 &1414593218

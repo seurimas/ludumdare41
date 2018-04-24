@@ -25,8 +25,14 @@ public class WorldRenderer : MonoBehaviour {
         generateBeach();
     }
 
-    void generateBeach()
-    {
+    void generateBeach() { 
+    
+        for (int i = 1; i< 8; i++)
+        {
+            Tile skyTile = ScriptableObject.CreateInstance<Tile>();
+            skyTile.sprite = beachSkySprite;
+            backgroundTilemap.SetTile(new Vector3Int(-i, 0, 0), skyTile);
+        }
         for (int i = 0; i < beachSize / 2; i++)
         {
             Tile floorTile = ScriptableObject.CreateInstance<Tile>();
