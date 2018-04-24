@@ -17,6 +17,7 @@ public class Monster : WorldItem
 }
 
 public class MonsterComponent : MonoBehaviour, IRhythmListener {
+    public static int killCount = 0;
     public Sprite laserWolfIdle0;
     public Sprite laserWolfIdle1;
     public Sprite laserWolfAttack;
@@ -141,6 +142,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
         if (health < 0)
         {
             Destroy(gameObject);
+            killCount += 1;
         }
     }
 }
