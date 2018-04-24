@@ -73,6 +73,14 @@ public class WorldPartyActions : MonoBehaviour {
             }
         }
     }
+    public void PartyRest()
+    {
+        party.party.Rest();
+    }
+    public void PartyCraft()
+    {
+        party.party.Craft();
+    }
 
     void TriggerPartyAttack()
     {

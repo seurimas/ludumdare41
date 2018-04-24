@@ -12,6 +12,12 @@ public class PlayerInventoryRenderer : MonoBehaviour {
     public Sprite juiceSprite;
     public Sprite safronSprite;
     public Sprite honeySprite;
+    public Sprite garnetWeaponSprite;
+    public Sprite sapphireWeaponSprite;
+    public Sprite rubyWeaponSprite;
+    public Sprite juiceWeaponSprite;
+    public Sprite safronWeaponSprite;
+    public Sprite honeyWeaponSprite;
     public Sprite woodSprite;
     public Sprite goldSprite;
 	// Use this for initialization
@@ -67,6 +73,18 @@ public class PlayerInventoryRenderer : MonoBehaviour {
                 return safronSprite;
             case Loot.JUICE:
                 return juiceSprite;
+            case Loot.GARNET_WEAPON:
+                return garnetWeaponSprite;
+            case Loot.SAPPHIRE_WEAPON:
+                return sapphireWeaponSprite;
+            case Loot.RUBY_WEAPON:
+                return rubyWeaponSprite;
+            case Loot.HONEY_WEAPON:
+                return honeyWeaponSprite;
+            case Loot.SAFRON_WEAPON:
+                return safronWeaponSprite;
+            case Loot.JUICE_WEAPON:
+                return juiceWeaponSprite;
             case Loot.WOOD:
                 return woodSprite;
         }

@@ -92,8 +92,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   role: 0
+  idleFrames: []
+  restSprite: {fileID: 0}
+  deadSprite: {fileID: 0}
   attackObject: {fileID: 1789652990966162, guid: 7706b31298a18a34d8394e546f9d148a,
     type: 2}
+  rubyWeaponSprite: {fileID: 21300008, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  sapphireWeaponSprite: {fileID: 21300010, guid: 2ddf2f3fbf98e73428cdb763cb303cf9,
+    type: 3}
+  garnetWeaponSprite: {fileID: 21300012, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  honeyWeaponSprite: {fileID: 21300002, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  safronWeaponSprite: {fileID: 21300006, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  juiceWeaponSprite: {fileID: 21300004, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
 --- !u!114 &114108500935330862
 MonoBehaviour:
   m_ObjectHideFlags: 1

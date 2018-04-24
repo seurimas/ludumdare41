@@ -24,19 +24,13 @@ public class ActionRhythmListener : MonoBehaviour, IRhythmListener
             (rhythm) => worldActions.PartyAttack() // Attack
         );
         rhythms.Add(new Notes[] { W, W, R, Q },
-            (rhythm) => worldActions.PartyAttack() // Defend
+            (rhythm) => worldActions.PartyRest() // Defend
         );
         rhythms.Add(new Notes[] { W, W, E, E },
             (rhythm) => worldActions.PartyHarvest() // Harvest
         );
         rhythms.Add(new Notes[] { Q, Q, E, E },
-            (rhythm) => worldActions.PartyAttack() // Special 2
-        );
-        rhythms.Add(new Notes[] { R, E, W, Q },
-            (rhythm) => worldActions.PartyAttack() // Special 3
-        );
-        rhythms.Add(new Notes[] { Q, W, E, R },
-            (rhythm) => worldActions.PartyAttack() // Special 4
+            (rhythm) => worldActions.PartyCraft() // Special 2
         );
         GetComponent<RhythmManager>().AddListener(this);
     }

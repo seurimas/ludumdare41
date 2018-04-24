@@ -10,6 +10,12 @@ public enum Loot
     RUBY,
     SAPPHIRE,
     GARNET,
+    HONEY_WEAPON,
+    SAFRON_WEAPON,
+    JUICE_WEAPON,
+    RUBY_WEAPON,
+    SAPPHIRE_WEAPON,
+    GARNET_WEAPON,
     WOOD,
     GOLD,
 }
@@ -20,6 +26,7 @@ public class PartyMemberStatus
     public int health = 10;
     public int maxHunger = 100;
     public int hunger = 100;
+    public bool resting = false;
 }
 
 public class Party : WorldItem
@@ -65,6 +72,59 @@ public class Party : WorldItem
             attackTarget = null;
             harvestTarget = target.GetId();
             HarvestItem(target);
+        }
+    }
+
+    public void Rest()
+    {
+        foreach (PartyMemberStatus partyMemberStatus in partyStatus.Values)
+        {
+            partyMemberStatus.resting = true;
+        }
+    }
+
+    private bool TryCraft(Loot source, Loot target)
+    {
+        if (!loot.Contains(target))
+        {
+            loot.Remove(source);
+            loot.Add(target);
+            return true;
+        }
+        return false;
+    }
+
+    public void Craft()
+    {
+        foreach (Loot aLoot in loot)
+        {
+            switch (aLoot)
+            {
+                case Loot.HONEY:
+                    if (TryCraft(aLoot, Loot.HONEY_WEAPON))
+                        return;
+                    break;
+                case Loot.GARNET:
+                    if (TryCraft(aLoot, Loot.GARNET_WEAPON))
+                        return;
+                    break;
+                case Loot.JUICE:
+                    if (TryCraft(aLoot, Loot.JUICE_WEAPON))
+                        return;
+                    break;
+                case Loot.RUBY:
+                    if (TryCraft(aLoot, Loot.RUBY_WEAPON))
+                        return;
+                    break;
+                case Loot.SAFRON:
+                    if (TryCraft(aLoot, Loot.SAFRON_WEAPON))
+                        return;
+                    break;
+                case Loot.SAPPHIRE:
+                    if (TryCraft(aLoot, Loot.SAPPHIRE_WEAPON))
+                        return;
+                    break;
+            }
         }
     }
 
