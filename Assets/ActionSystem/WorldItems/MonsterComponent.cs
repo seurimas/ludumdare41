@@ -5,6 +5,7 @@ using UnityEngine;
 public enum MonsterType
 {
     LASER_WOLF,
+    LASER_WOLF_2,
 }
 
 public class Monster : WorldItem
@@ -35,11 +36,13 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     public int attackRange = 1;
     public int aggroRange = 3;
     public float speed = 6;
+    private float timeSinceMove = 0;
+    public float moveTime = 2;
 
     public void OnBeatRight(int beatNumber)
     {
         animationState = (animationState + 1) % idleFrames;
-        if (beatNumber % 4 == 0)
+        if (beatNumber % 4 == 0 || (beatNumber % 2 == 0 && monster.monsterType == MonsterType.LASER_WOLF_2))
         {
             AI();
         }
@@ -62,6 +65,13 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
         monster = GetComponent<WorldItemComponent>().GetItem<Monster>();
         switch (monster.monsterType)
         {
+            case MonsterType.LASER_WOLF_2:
+                health = 12;
+                speed *= 1.5f;
+                animationFrames = new Sprite[] { laserWolfIdle0, laserWolfIdle1, laserWolfAttack };
+                attackPrefab = laserPrefab;
+                attackSound = laserSound;
+                break;
             case MonsterType.LASER_WOLF:
                 animationFrames = new Sprite[] { laserWolfIdle0, laserWolfIdle1, laserWolfAttack };
                 attackPrefab = laserPrefab;
@@ -107,10 +117,12 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
                     return;
                 }
             }
+            bool partyInRange = false;
             foreach (WorldItem item in SpiralWorldManager.instance.world.GetItemsAt(monster.NumberLinePosition - aggroRange, monster.NumberLinePosition + aggroRange))
             {
                 if (item is Party)
                 {
+                    partyInRange = true;
                     if (item.NumberLinePosition > monster.NumberLinePosition)
                     {
                         monster.NumberLinePosition++;
@@ -119,6 +131,15 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
                     {
                         monster.NumberLinePosition--;
                     }
+                }
+            }
+            if (!partyInRange && Mathf.Abs(transform.position.x - monster.PositionX) < 0.1f)
+            {
+                timeSinceMove += 1;
+                if (timeSinceMove > moveTime)
+                {
+                    timeSinceMove -= moveTime;
+                    monster.NumberLinePosition += Random.Range(0, 2) == 0 ? -1 : 1;
                 }
             }
         }

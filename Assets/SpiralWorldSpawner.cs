@@ -152,13 +152,13 @@ public class SpiralWorldSpawner : MonoBehaviour {
                     });
                     break;
                 case 11:
+                case 12:
                     world.AddItem(new Monster
                     {
                         NumberLinePosition = i,
                         monsterType = MonsterType.LASER_WOLF,
                     });
                     break;
-                case 12:
                 case 13:
                 case 14:
                 case 15:
@@ -175,6 +175,13 @@ public class SpiralWorldSpawner : MonoBehaviour {
                         harvested = true,
                         resource = PlantResource.TREE,
                         NumberLinePosition = i,
+                    });
+                    break;
+                case 17:
+                    world.AddItem(new Monster
+                    {
+                        NumberLinePosition = i,
+                        monsterType = MonsterType.LASER_WOLF_2,
                     });
                     break;
                 default:

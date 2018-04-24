@@ -139,13 +139,11 @@ public class Party : WorldItem
                 case PlantResource.HONEY:
                 case PlantResource.JUICE:
                 case PlantResource.SAFRON:
-                    return partyStatus[Notes.Rogue].health > 0;
                 case PlantResource.RUBY:
                 case PlantResource.SAPPHIRE:
                 case PlantResource.GARNET:
-                    return partyStatus[Notes.Cleric].health > 0;
                 case PlantResource.TREE:
-                    return partyStatus[Notes.Bard].health > 0;
+                    return true;
             }
         }
         return false;
