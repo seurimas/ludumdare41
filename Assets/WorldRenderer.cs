@@ -7,6 +7,7 @@ public class WorldRenderer : MonoBehaviour {
     private Tilemap floorTilemap;
     private Tilemap backgroundTilemap;
     private Tilemap foregroundTilemap;
+    public Sprite seaFloorSprite;
     public Sprite beachFloorSprite;
     public Sprite beachSkySprite;
     public Sprite[] beachForegroundSprites;
@@ -29,6 +30,9 @@ public class WorldRenderer : MonoBehaviour {
     
         for (int i = 1; i< 8; i++)
         {
+            Tile floorTile = ScriptableObject.CreateInstance<Tile>();
+            floorTile.sprite = seaFloorSprite;
+            floorTilemap.SetTile(new Vector3Int(-i, 0, 0), floorTile);
             Tile skyTile = ScriptableObject.CreateInstance<Tile>();
             skyTile.sprite = beachSkySprite;
             backgroundTilemap.SetTile(new Vector3Int(-i, 0, 0), skyTile);

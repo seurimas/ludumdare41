@@ -13,10 +13,7 @@ public class SpiralWorldCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (party.party.PositionX > 0 && party.party.PositionX < 246)
-        {
-            Vector3 targetOffset = party.party.retreating ? position1 : position0;
-            transform.Translate(SpiralWorldManager.TranslationToTarget(transform.position.x - position0.x, party.party.NumberLinePosition, movementSpeed * Time.deltaTime));
-        }
+        Vector3 targetOffset = party.party.retreating ? position1 : position0;
+        transform.Translate(SpiralWorldManager.TranslationToTarget(transform.position.x - targetOffset.x, party.party.NumberLinePosition, movementSpeed * Time.deltaTime));
 	}
 }

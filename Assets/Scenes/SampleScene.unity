@@ -1521,6 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a51b07246706f443a134213499966e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seaFloorSprite: {fileID: 21300056, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   beachFloorSprite: {fileID: 21300000, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   beachSkySprite: {fileID: 21300008, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   beachForegroundSprites:

@@ -36,7 +36,9 @@ public class WorldPartyActions : MonoBehaviour {
         return true;
     }
 
-    public void AdvanceParty() {
+    public void AdvanceParty()
+    {
+        ClearRest();
         int currentPosition = party.party.NumberLinePosition;
         if (CanPartyEnter(currentPosition + 1))
         {
@@ -47,6 +49,7 @@ public class WorldPartyActions : MonoBehaviour {
     }
     public void RetreatParty()
     {
+        ClearRest();
         int currentPosition = party.party.NumberLinePosition;
         if (CanPartyEnter(currentPosition - 1))
         {
@@ -57,6 +60,7 @@ public class WorldPartyActions : MonoBehaviour {
     }
     public void PartyAttack()
     {
+        ClearRest();
         int currentPosition = party.party.NumberLinePosition;
         foreach (WorldItem item in world.world.GetItemsAt(currentPosition - 1, currentPosition + 1))
         {
@@ -66,11 +70,11 @@ public class WorldPartyActions : MonoBehaviour {
                 return;
             }
         }
-
         TriggerPartyAttack();
     }
     public void PartyHarvest()
     {
+        ClearRest();
         int currentPosition = party.party.NumberLinePosition;
         foreach (WorldItem item in world.world.GetItemsAt(currentPosition - 1, currentPosition + 1))
         {
@@ -81,12 +85,20 @@ public class WorldPartyActions : MonoBehaviour {
             }
         }
     }
+    private void ClearRest()
+    {
+        foreach (PartyMemberStatus partyMemberStatus in party.party.partyStatus.Values)
+        {
+            partyMemberStatus.resting = false;
+        }
+    }
     public void PartyRest()
     {
         party.party.Rest();
     }
     public void PartyCraft()
     {
+        ClearRest();
         party.party.Craft();
     }
 
