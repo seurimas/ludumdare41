@@ -80,7 +80,6 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
     {
         RhythmManager.instance.RemoveListener(this);
         SpiralWorldManager.instance.RemoveObject(monster.GetId());
-        killCount += 1;
     }
 
     void AI()
@@ -143,6 +142,7 @@ public class MonsterComponent : MonoBehaviour, IRhythmListener {
         if (health < 0)
         {
             Destroy(gameObject);
+            killCount += 1;
         }
     }
 }
