@@ -1853,12 +1853,13 @@ MonoBehaviour:
   juiceSprite: {fileID: 21300042, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   safronSprite: {fileID: 21300046, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   honeySprite: {fileID: 21300044, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
-  garnetWeaponSprite: {fileID: 0}
-  sapphireWeaponSprite: {fileID: 0}
-  rubyWeaponSprite: {fileID: 0}
-  juiceWeaponSprite: {fileID: 0}
-  safronWeaponSprite: {fileID: 0}
-  honeyWeaponSprite: {fileID: 0}
+  garnetWeaponSprite: {fileID: 21300012, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  sapphireWeaponSprite: {fileID: 21300010, guid: 2ddf2f3fbf98e73428cdb763cb303cf9,
+    type: 3}
+  rubyWeaponSprite: {fileID: 21300008, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  juiceWeaponSprite: {fileID: 21300004, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  safronWeaponSprite: {fileID: 21300006, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
+  honeyWeaponSprite: {fileID: 21300002, guid: 2ddf2f3fbf98e73428cdb763cb303cf9, type: 3}
   woodSprite: {fileID: 21300054, guid: e17e0b98eb8f8824283ae99e62376f4d, type: 3}
   goldSprite: {fileID: 0}
 --- !u!222 &1414593218
