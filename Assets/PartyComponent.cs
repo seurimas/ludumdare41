@@ -16,6 +16,7 @@ public class PartyComponent : MonoBehaviour {
         WorldPartyActions.Forward += OnPartyForward;
         WorldPartyActions.Backward += OnPartyBackward;
         GetChildren();
+        StartCoroutine(party.BeHungry(5));
     }
 
     void Update()

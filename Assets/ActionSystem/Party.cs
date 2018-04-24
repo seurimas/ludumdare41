@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum Loot
 {
@@ -187,5 +188,23 @@ public class Party : WorldItem
     public void AddItem(Loot loot)
     {
         this.loot.Add(loot);
+    }
+
+    public IEnumerator BeHungry(float waitTime)
+    {
+        while (true)
+        {
+            foreach(KeyValuePair<Notes,PartyMemberStatus> kv in partyStatus)
+            {
+                if(kv.Value.hunger > 0)
+                    kv.Value.hunger -= 5;
+
+                if (kv.Value.hunger <= 0)
+                    kv.Value.health -= 1;
+                Debug.Log(kv.Key + " hunger is: " + kv.Value.hunger);
+            }
+            yield return new WaitForSeconds(waitTime);
+        }
+        
     }
 }
